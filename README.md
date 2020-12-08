@@ -1,2 +1,7 @@
 # A-Lot-A-Mancala
-A Mancala game. Two player. You against the computer or against another player.
+A **Mancala** game. 
+
+## Features
+
+1. Two player. 
+2. *You* against *the computer* or against *another player*.
