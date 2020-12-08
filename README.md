@@ -3,7 +3,7 @@ A **Mancala** game.
 </br>
 ## Features
 
-[ ] Two player. 
+1. [ ] Two player. 
 [ ] *You* against *the computer* or against *another player*.
 [ ] Take turns shifting all beeds in one of your mini pots over, leaving one in each adjacent pot (including the big pots).
 [ ] If you have enough beeds to go around to your oponent's mini-pots, do so.
