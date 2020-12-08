@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+header>h1 {
+    text-transform: uppercase;
+    background: lightgreen;
+    color: darkgrey;
+    text-decoration: underline;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+}
+section {
+    display: flex;
+    justify-content: center;
+}
+.playerOneCapture {
+    grid-area: playerOneCapture;
+}
+.playerTwoCapture {
+    grid-area: playerTwoCapture;
+}
+.pOne1 {
+    grid-area: pOne1;
+}
+.pOne2 {
+    grid-area: pOne2;
+}
+.pOne3 {
+    grid-area: pOne3;
+}
+.pOne4 {
+    grid-area: pOne4;
+}
+.pOne5 {
+    grid-area: pOne5;
+}
+.pOne6 {
+    grid-area: pOne6;
+}
+.pTwo6 {  
+    grid-area: pTwo6;
+}
+.pTwo5 {  
+    grid-area: pTwo5;
+}
+.pTwo4 {  
+    grid-area: pTwo4;
+}
+.pTwo3 {  
+    grid-area: pTwo3;
+}
+.pTwo2 {  
+    grid-area: pTwo2;
+}
+.pTwo1 {  
+    grid-area: pTwo1;
+}
+#theGameSpacing {
+    height: 22rem;
+    width: 70%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "playerTwoCapture pTwo6 pTwo5 pTwo4 pTwo3 pTwo2 pTwo1 playerOneCapture"
+        "playerTwoCapture pOne1 pOne2 pOne3 pOne4 pOne5 pOne6 playerOneCapture";
+    border: solid 0.15rem lightgreen;
+}
