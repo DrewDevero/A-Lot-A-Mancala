@@ -11,3 +11,4 @@ A **Mancala** game.
 7. [ ] The player with the most beeds in their big pot wins! (7 days to completion)
 
 ![Mancala Game Image](http://www.adrcrafts.com/wp-content/uploads/2018/06/Mancala-boardclassic-wooden-toyplay-woodenwooden-game-7.jpg)
+[A-Lot-A-Mancala](https://drewdevero.github.io/A-Lot-A-Mancala)
