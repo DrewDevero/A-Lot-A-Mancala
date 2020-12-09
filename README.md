@@ -17,4 +17,4 @@ A **Mancala** game.
 ** Unsolved problems to be updated when nearning completion of project
 
 ![Mancala Game Image](http://www.adrcrafts.com/wp-content/uploads/2018/06/Mancala-boardclassic-wooden-toyplay-woodenwooden-game-7.jpg)
-[A-Lot-A-Mancala](https://drewdevero.github.io/Millennial-Mancala)
+[Millennial Mancala](https://drewdevero.github.io/Millennial-Mancala)
