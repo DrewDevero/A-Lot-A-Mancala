@@ -1,4 +1,4 @@
-# A-Lot-A-Mancala
+# Millennial Mancala
 A **Mancala** game. 
 
 ## Features

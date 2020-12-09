@@ -5,6 +5,9 @@
     font-size: 16px;
     font-family: 'Courier New', Courier, monospace;
 }
+body {
+    background: linear-gradient(90deg, blue, rgba(3,4,5,0.15), blue);
+}
 header {
     display: flex;
     justify-content: center;
@@ -13,7 +16,7 @@ header {
 header>h1 {
     text-transform: uppercase;
     background: lightgreen;
-    color: darkgrey;
+    color: rgb(252, 44, 44);
     text-decoration: underline;
     font-weight: bolder;
     font-size: 3rem;
@@ -32,47 +35,73 @@ input {
 }
 #playerOneCapture {
     grid-area: playerOneCapture;
-    background : lightgrey;
+    color: black;
+    background: lightblue;
 }
 #playerTwoCapture {
     grid-area: playerTwoCapture;
-    background: lightgrey
+    color: white;
+    background: lightcoral;
 }
 #pOne1 {
     grid-area: pOne1;
+    color: black;
+    background: lightblue;
 }
 #pOne2 {
     grid-area: pOne2;
+    color: black;
+    background: lightblue;
 }
 #pOne3 {
     grid-area: pOne3;
+    color: black;
+    background: lightblue;
 }
 #pOne4 {
     grid-area: pOne4;
+    color: black;
+    background: lightblue;
 }
 #pOne5 {
     grid-area: pOne5;
+    color: black;
+    background: lightblue;
 }
 #pOne6 {
     grid-area: pOne6;
+    color: black;
+    background: lightblue;
 }
 #pTwo1 {  
     grid-area: pTwo1;
+    color: white;
+    background: lightcoral;
 }
 #pTwo2 {  
     grid-area: pTwo2;
+    color: white;
+    background: lightcoral;
 }
 #pTwo3 {  
     grid-area: pTwo3;
+    color: white;
+    background: lightcoral;
 }
 #pTwo4 {  
     grid-area: pTwo4;
+    color: white;
+    background: lightcoral;
 }
 #pTwo5 {  
     grid-area: pTwo5;
+    color: white;
+    background: lightcoral;
 }
 #pTwo6 {  
     grid-area: pTwo6;
+    color: white;
+    background: lightcoral;
 }
 #theGameSpacing {
     height: 100%;

@@ -5,6 +5,11 @@
 // Highest count of player capture pot beads wins.
 // Game resets
 
+// silver and gold
+// diamonds and pearls
+// blue and pink
+// black and white
+
 $(() => {
     console.log("hello", $(".miniPots").length);
     console.log($("input[type=submit]").length);
