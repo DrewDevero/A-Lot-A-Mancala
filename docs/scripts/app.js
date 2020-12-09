@@ -5,22 +5,34 @@
 // Highest count of player capture pot beads wins.
 // Game resets
 
-$(() => console.log("hello", $(".miniPots").length));
+$(() => {
+    console.log("hello", $(".miniPots").length);
+    console.log($("input[type=submit]").length);
+});
 $("form").on("submit", (e) => {
     e.preventDefault();
 })
 
-// function applys to ability to click a button and make that individual button value equal to zero
-    /* $(".miniPots").click(()=> {
-        $("input").val("0");
-    }); */
+// function applies ability to click a button and make that individual button value equal to zero
 
 function applyZero(toZero) {
     $("input[type=submit]").eq(toZero).click(()=> {
+            const valueOne = parseInt($("input[type=submit]").eq(toZero).val());
+            const valueTwo = parseInt($("input[type=submit]").eq(toZero+1).val());
+            const addedValues = valueOne + valueTwo
+            $("input[type=submit]").eq(toZero+1).val(addedValues)
+            console.log(addedValues);
             $("input[type=submit]").eq(toZero).val("0");
+            console.log($("input[type=submit]").eq(0));
     })
     if (toZero < $("input[type=submit]").length) {
         applyZero(toZero+1);
     }
 }
 applyZero(0);
+
+// when the player chooses from one of their mini-pots
+// the mini-pot value = 0
+// adjacent pot gets + 1 
+// count down from initial value of pot
+// keep adding one to subsequent pots until count === 0

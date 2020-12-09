@@ -32,12 +32,10 @@ input {
 }
 #playerOneCapture {
     grid-area: playerOneCapture;
-    text-align: center;
     background : lightgrey;
 }
 #playerTwoCapture {
     grid-area: playerTwoCapture;
-    text-align: center;
     background: lightgrey
 }
 #pOne1 {
