@@ -4,8 +4,8 @@ A **Mancala** game.
 ## Features
 1. [ ] Built with HTML, CSS, JavaScript and jQuery (7 days to completion)
 2. [ ] *You* against *the computer* or against *another player*. (3 days to completion)
-3. [ ] Take turns shifting all beads in one of your mini pots over, leaving one in each adjacent pot (including the big pots). (4 days to completion)
-4. [ ] If you have enough beads to go around to your oponent's mini-pots, do so. (5 days to completion)
+3. [X] Take turns shifting all beads in one of your mini pots over, leaving one in each adjacent pot (including the big pots). (4 days to completion)
+4. [X] If you have enough beads to go around to your oponent's mini-pots, do so. (5 days to completion)
 5. [ ] If your last laid bead is across from an opponets filled mini pot, you capture their mini pot and your one bead and put those beads in your big pot!
 6. [ ] When/if one player has no more beads in any of their mini-pots, the other play can put all of their mini-pot beads into their big pot! (6 days to completion)
 7. [ ] The player with the most beads in their big pot wins! (7 days to completion)
