@@ -46,33 +46,49 @@ applyZero(0); */
 $("#playerTwoCapture").off("click");
  */
 // when the player chooses from one of their mini-pots
-// the mini-pot value = 0
 // adjacent pot gets + 1 
 // count down from initial value of pot
 // keep adding one to subsequent pots until count === 0
+// the mini-pot chosen new value = 0
 
 function applyZero(toZero) {
     $("input[type=submit]").eq(toZero).click(()=> {
-            const valueOne = parseInt($("input[type=submit]").eq(toZero).val());
-            const valueTwo = parseInt($("input[type=submit]").eq(toZero+1).val());
-            const addedValues = valueOne + valueTwo
-            $("input[type=submit]").eq(toZero+1).val(addedValues)
-            console.log(addedValues);
-            $("input[type=submit]").eq(toZero).val("0");
-            console.log($("input[type=submit]").eq(toZero));
+        const valueOne = parseInt($("input[type=submit]").eq(toZero).val());
+        let i = valueOne;
+        let next = toZero + 1;
+        while(i > 0) {      
+            const valueNext = parseInt($("input[type=submit]").eq(next).val());
+            const addedValues = valueNext + 1;
+            $("input[type=submit]").eq(next).val(addedValues);
+            next++;
+            if(next === $("input[type=submit]").length) {
+                next = 0;
+            }
+            i--;
+        }
+        $("input[type=submit]").eq(toZero).val("0");
+        console.log($("input[type=submit]").eq(toZero));
     })
     if (toZero < $("input[type=submit]").length - 2) {
         applyZero(toZero+1);
     }
-    $("input[type=submit]").eq(13).click(()=> {
-            const valueOne = parseInt($("input[type=submit]").eq(13).val());
-            const valueTwo = parseInt($("input[type=submit]").eq(0).val());
-            const addedValues = valueOne + valueTwo
-            $("input[type=submit]").eq(0).val(addedValues)
-            console.log(addedValues);
-            $("input[type=submit]").eq(13).val("0");
-            console.log($("input[type=submit]").eq(13));
-    })
+    /* $("input[type=submit]").eq(12).click(()=> {
+        const valueOne = parseInt($("input[type=submit]").eq(12).val());
+        let i = valueOne;
+        let next = 0;
+        while(i > 0) {      
+            const valueNext = parseInt($("input[type=submit]").eq(next).val());
+            const addedValues = valueNext + 1;
+            $("input[type=submit]").eq(next).val(addedValues);
+            console.log(next);
+            console.log(i);
+            console.log(addedValue);
+            next++;
+            i--;
+        }
+        $("input[type=submit]").eq(12).val("0");
+        console.log($("input[type=submit]").eq(12));
+    }) */
 }
 applyZero(0);
 
