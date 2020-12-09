@@ -15,12 +15,13 @@ header {
 }
 header>h1 {
     text-transform: uppercase;
-    background: lightgreen;
-    color: rgb(252, 44, 44);
+    background: rgb(144, 238, 144, 0.15);
+    color: linear-gradient(90deg, rgb(76, 0, 255), rgba(3,4,5,0.15), rgb(76, 0, 255));
     text-decoration: underline;
     font-weight: bolder;
     font-size: 3rem;
     padding: 0.5rem;
+    border-radius: 50%;
 }
 section {
     display: flex;
