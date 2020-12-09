@@ -9,6 +9,11 @@
 // diamonds and pearls
 // blue and pink
 // black and white
+// spinach and kale
+// red wine and white wine
+// gigs and full time job
+// stocks and bonds
+// bitcoin and dollar bill
 
 $(() => {
     console.log("hello", $(".miniPots").length);
