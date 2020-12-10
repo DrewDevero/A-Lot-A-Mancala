@@ -23,38 +23,6 @@ $("form").on("submit", (e) => {
     e.preventDefault();
 })
 
-// function applies ability to click a button and make that individual button value equal to zero and adds to the adjacent button
-
-/* function applyZero(toZero) {
-    $("input[type=submit]").eq(toZero).click(()=> {
-            const valueOne = parseInt($("input[type=submit]").eq(toZero).val());
-            const valueTwo = parseInt($("input[type=submit]").eq(toZero+1).val());
-            const addedValues = valueOne + valueTwo
-            $("input[type=submit]").eq(toZero+1).val(addedValues)
-            console.log(addedValues);
-            $("input[type=submit]").eq(toZero).val("0");
-            console.log($("input[type=submit]").eq(toZero));
-    })
-    if (toZero < $("input[type=submit]").length - 2) {
-        applyZero(toZero+1);
-    }
-    $("input[type=submit]").eq(13).click(()=> {
-            const valueOne = parseInt($("input[type=submit]").eq(13).val());
-            const valueTwo = parseInt($("input[type=submit]").eq(0).val());
-            const addedValues = valueOne + valueTwo
-            $("input[type=submit]").eq(0).val(addedValues)
-            console.log(addedValues);
-            $("input[type=submit]").eq(13).val("0");
-            console.log($("input[type=submit]").eq(13));
-    })
-}
-applyZero(0); */
-
-// prevents capture pots from being manipulated
-
-/* $("#playerOneCapture").off("click");
-$("#playerTwoCapture").off("click");
- */
 // when the player chooses from one of their mini-pots
 // adjacent pot gets + 1 
 // count down from initial value of pot
@@ -82,23 +50,6 @@ function applyZero(toZero) {
     if (toZero < $("input[type=submit]").length - 2) {
         applyZero(toZero+1);
     }
-    /* $("input[type=submit]").eq(12).click(()=> {
-        const valueOne = parseInt($("input[type=submit]").eq(12).val());
-        let i = valueOne;
-        let next = 0;
-        while(i > 0) {      
-            const valueNext = parseInt($("input[type=submit]").eq(next).val());
-            const addedValues = valueNext + 1;
-            $("input[type=submit]").eq(next).val(addedValues);
-            console.log(next);
-            console.log(i);
-            console.log(addedValue);
-            next++;
-            i--;
-        }
-        $("input[type=submit]").eq(12).val("0");
-        console.log($("input[type=submit]").eq(12));
-    }) */
 }
 applyZero(0);
 
