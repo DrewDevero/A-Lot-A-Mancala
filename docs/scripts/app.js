@@ -15,13 +15,32 @@
 // stocks and bonds
 // bitcoin and dollar bill
 
-$(() => {
-    console.log("hello", $(".miniPots").length);
-    console.log($("input[type=submit]").length);
-});
+// Add player one and player two selector fields 
+// Type in name for each player - user input
+// Random choice of which player goes first
+// Only player field thas's currently in play is active
+// Highlight current player's name
+
+/* ------------------ code here --------------------*/
+
+// Add player one and player two selector fields 
+// Type in name for each player - user input
+// Random choice of which player goes first
+// Only player field thas's currently in play is active
+// Highlight current player's name
+
+
+
+// prevents reload of page upon submit button click
+
 $("form").on("submit", (e) => {
     e.preventDefault();
 })
+
+// prevents capture pots from being manipulated
+
+$("#playerOneCapture").off("click");
+$("#playerTwoCapture").off("click");
 
 // when the player chooses from one of their mini-pots
 // adjacent pot gets + 1 
@@ -53,8 +72,11 @@ function applyZero(toZero) {
 }
 applyZero(0);
 
-// prevents capture pots from being manipulated
-
-$("#playerOneCapture").off("click");
-$("#playerTwoCapture").off("click");
-
+// make pOne pots track to player one
+// make pTwo pots track to player two
+// when the final bead/++ is made to a pot
+// check if that pot is === to 1
+// if pot === to 1 && pot is on tracked player's side
+// add pot to pot across (eg. add pOne2 to pTwo5) to get a total
+// add that total to the capture pot of the currently tracked player
+// make pot and pot across (eg. add pOne2 to pTwo5) === 0

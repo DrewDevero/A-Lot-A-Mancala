@@ -23,11 +23,49 @@ header>h1 {
     padding: 0.5rem;
     border-radius: 50%;
 }
-section {
+#playerSection {
+    display: inline-flex;
+    position: relative;
+}
+#playerForm {
+    height: 0.5rem;
+    width: 0.5rem;
+}
+#playerOne {
+    margin: 1rem;
+    color: lightblue;
+    text-align: center;
+    font-family: 'Ariel';
+    font-weight: bolder;
+    font-size: 2rem;
+    position: absolute;
+    top: -3rem;
+    left: 20%;
+    transition: all 0.25s ease-in-out;
+}
+#playerTwo {
+    margin: 1rem;
+    color: lightcoral;
+    text-align: center;
+    font-family: 'Ariel';
+    font-weight: bolder;
+    font-size: 2rem;
+    position: absolute;
+    top: -3rem;
+    left: 53.5rem;
+    transition: all 0.25s ease-in-out;
+}
+#playerOne:focus {
+    background: rgba(144, 238, 144, 0.7);
+}
+#playerTwo:focus {
+    background: rgb(144, 238, 144, 0.7);
+}
+.gameSection {
     display: flex;
     justify-content: center;
 }
-form {
+.gameForm {
     margin: 2rem;
 }
 input {
