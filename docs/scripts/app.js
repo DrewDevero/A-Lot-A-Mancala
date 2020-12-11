@@ -26,10 +26,11 @@
 // Add player one and player two selector fields 
 // Type in name for each player - user input
 // Random choice of which player goes first
-// Only player field thas's currently in play is active
+// Only player field that's currently in play is active
 // Highlight current player's name
 
-
+const P_ONE = [$("#pOne1"), $("#pOne2"), $("#pOne3"), $("#pOne4"), $("#pOne5"), $("#pOne6")]
+const P_TWO = [$("#pTwo1"), $("#pTwo2"), $("#pTwo3"), $("#pTwo4"), $("#pTwo5"), $("#pTwo6")]
 
 // prevents reload of page upon submit button click
 
@@ -37,22 +38,31 @@ $("form").on("submit", (e) => {
     e.preventDefault();
 })
 
-// prevents capture pots from being manipulated
-
-$("#playerOneCapture").off("click");
-$("#playerTwoCapture").off("click");
-
 // when the player chooses from one of their mini-pots
 // adjacent pot gets + 1 
 // count down from initial value of pot
 // keep adding one to subsequent pots until count === 0
 // the mini-pot chosen new value = 0
 
-function applyZero(toZero) {
-    $("input[type=submit]").eq(toZero).click(()=> {
-        const valueOne = parseInt($("input[type=submit]").eq(toZero).val());
+//Toss the coin (button click) to have p1 or p2 be chosen to go first. 50/50 (50/49.9999...) chance achieved with Math.random()
+
+$("#coinToss").one("click", () => {
+    let coinToss = Math.random();
+        coinToss > 0.5 ?  
+            $(".pTwoPots").off("click") &&
+            $("#coinToss").html("Player One Starts") &&
+            setTimeout(() => $("#coinToss").html("Mancala"), 3000) : 
+            $(".pOnePots").off("click") &&
+            $("#coinToss").html("Player Two Starts") &&
+            setTimeout(() => $("#coinToss").html("Mancala"), 3000)
+})
+function playerMove(choice) {
+    $("input[type=submit]").eq(choice).click(()=> {
+        const valueOne = parseInt($("input[type=submit]").eq(choice).val());
         let i = valueOne;
-        let next = toZero + 1;
+        let next = choice + 1;
+// add one to every adjacent pot
+        $("input[type=submit]").eq(choice).val("0");
         while(i > 0) {      
             const valueNext = parseInt($("input[type=submit]").eq(next).val());
             const addedValues = valueNext + 1;
@@ -62,15 +72,23 @@ function applyZero(toZero) {
                 next = 0;
             }
             i--;
+            /* if(i === 0 && parseInt($("input[type=submit]").eq(next).val(addedValues)) === 1 && $(".pTwoPots").off("click") === true) {
+                let playerOneCurrent = parseInt($("#playerOneCapture").val())
+                $("#playerOneCapture").val(playerOneCurrent + addedValues)
+            } */
+            console.log($("input[type=submit]").eq(choice));
         }
-        $("input[type=submit]").eq(toZero).val("0");
-        console.log($("input[type=submit]").eq(toZero));
     })
-    if (toZero < $("input[type=submit]").length - 2) {
-        applyZero(toZero+1);
+    if (choice < $("input[type=submit]").length - 2) {
+        playerMove(choice+1);
     }
 }
-applyZero(0);
+playerMove(0);
+
+// prevents capture pots from being manipulated
+
+$("#playerOneCapture").off("click");
+$("#playerTwoCapture").off("click");
 
 // make pOne pots track to player one
 // make pTwo pots track to player two
@@ -80,3 +98,7 @@ applyZero(0);
 // add pot to pot across (eg. add pOne2 to pTwo5) to get a total
 // add that total to the capture pot of the currently tracked player
 // make pot and pot across (eg. add pOne2 to pTwo5) === 0
+
+/* function captureOpponent() {
+    if(
+} */
