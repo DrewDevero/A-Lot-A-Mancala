@@ -5,6 +5,8 @@
 // Highest count of player capture pot beads wins.
 // Game resets
 
+// * Maybe attach API information about Africa and American connections
+
 // silver and gold
 // diamonds and pearls
 // blue and pink
@@ -29,8 +31,9 @@
 // Only player field that's currently in play is active
 // Highlight current player's name
 
-const P_ONE = [$("#pOne1"), $("#pOne2"), $("#pOne3"), $("#pOne4"), $("#pOne5"), $("#pOne6")]
+const P_ONE = [$("#pOne6"), $("#pOne5"), $("#pOne4"), $("#pOne3"), $("#pOne2"), $("#pOne1")]
 const P_TWO = [$("#pTwo1"), $("#pTwo2"), $("#pTwo3"), $("#pTwo4"), $("#pTwo5"), $("#pTwo6")]
+let playerOne;
 
 // prevents reload of page upon submit button click
 
@@ -38,52 +41,83 @@ $("form").on("submit", (e) => {
     e.preventDefault();
 })
 
+// alternates playable sides
+
+function alternatePlayer() {
+    if(playerOne === true) {
+        playerMove(0);
+        $(".pOnePots").off("click");
+        return playerOne = false;
+    } else {
+        playerMove(0);
+        $(".pTwoPots").off("click");
+        return playerOne = true;
+    }
+};
+
 // when the player chooses from one of their mini-pots
 // adjacent pot gets + 1 
 // count down from initial value of pot
 // keep adding one to subsequent pots until count === 0
 // the mini-pot chosen new value = 0
 
-//Toss the coin (button click) to have p1 or p2 be chosen to go first. 50/50 (50/49.9999...) chance achieved with Math.random()
-
-$("#coinToss").one("click", () => {
-    let coinToss = Math.random();
-        coinToss > 0.5 ?  
-            $(".pTwoPots").off("click") &&
-            $("#coinToss").html("Player One Starts") &&
-            setTimeout(() => $("#coinToss").html("Mancala"), 3000) : 
-            $(".pOnePots").off("click") &&
-            $("#coinToss").html("Player Two Starts") &&
-            setTimeout(() => $("#coinToss").html("Mancala"), 3000)
-})
 function playerMove(choice) {
     $("input[type=submit]").eq(choice).click(()=> {
         const valueOne = parseInt($("input[type=submit]").eq(choice).val());
         let i = valueOne;
         let next = choice + 1;
+        let time = 300;
 // add one to every adjacent pot
-        $("input[type=submit]").eq(choice).val("0");
         while(i > 0) {      
-            const valueNext = parseInt($("input[type=submit]").eq(next).val());
-            const addedValues = valueNext + 1;
-            $("input[type=submit]").eq(next).val(addedValues);
-            next++;
-            if(next === $("input[type=submit]").length) {
-                next = 0;
-            }
+            setTimeout(() => {
+                const valueNext = parseInt($("input[type=submit]").eq(next).val());
+                const addedValues = valueNext + 1;
+                $("input[type=submit]").eq(next).val(addedValues);
+                next++;
+                if(next === $("input[type=submit]").length) {
+                    next = 0;
+                }
+            }, time);
+            time += 300;
             i--;
             /* if(i === 0 && parseInt($("input[type=submit]").eq(next).val(addedValues)) === 1 && $(".pTwoPots").off("click") === true) {
                 let playerOneCurrent = parseInt($("#playerOneCapture").val())
                 $("#playerOneCapture").val(playerOneCurrent + addedValues)
             } */
-            console.log($("input[type=submit]").eq(choice));
         }
+        if(parseInt($("input[type=submit]").eq(choice).val()) === 0) {
+            "";
+        } else {
+            alternatePlayer();
+        }
+        $("input[type=submit]").eq(choice).val("0");
+        return playerOne;
     })
     if (choice < $("input[type=submit]").length - 2) {
         playerMove(choice+1);
     }
+    return playerOne;
 }
-playerMove(0);
+//Toss the coin (button click) to have p1 or p2 be chosen to go first. 50/50 (50/49.9999...) chance achieved with Math.random()
+
+$("#coinToss").one("click", () => {
+    // alternates playable sides
+    let coinToss = Math.random();
+        if(coinToss > 0.5) {
+            playerMove(0);
+            $(".pTwoPots").off("click");
+            $("#coinToss").html("Player One Starts");
+            setTimeout(() => $("#coinToss").html("Mancala"), 3000);
+            return playerOne = true;
+        } else {
+            playerMove(0);
+            $(".pOnePots").off("click");
+            $("#coinToss").html("Player Two Starts");
+            setTimeout(() => $("#coinToss").html("Mancala"), 3000);
+            return playerOne = false;
+        }
+})
+
 
 // prevents capture pots from being manipulated
 
@@ -99,6 +133,3 @@ $("#playerTwoCapture").off("click");
 // add that total to the capture pot of the currently tracked player
 // make pot and pot across (eg. add pOne2 to pTwo5) === 0
 
-/* function captureOpponent() {
-    if(
-} */
