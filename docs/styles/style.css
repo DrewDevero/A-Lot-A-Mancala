@@ -43,6 +43,8 @@ header>h1 {
     position: absolute;
     top: -3rem;
     left: 20%;
+    border-radius: 20%;
+    opacity: 0.8;
     transition: all 0.25s ease-in-out;
 }
 #playerTwo {
@@ -55,6 +57,8 @@ header>h1 {
     position: absolute;
     top: -3rem;
     left: 53.5rem;
+    border-radius: 20%;
+    opacity: 0.8;
     transition: all 0.25s ease-in-out;
 }
 #playerOne:focus {
@@ -94,6 +98,7 @@ input {
 }
 .miniPots {
     outline: 0.1rem solid black;
+    cursor: pointer;
 }
 #pOne1 {
     grid-area: pOne1;
@@ -180,4 +185,5 @@ input {
     padding: 0.5rem;
     border-radius: 30%;
     outline: none;
+    cursor: pointer;
 }

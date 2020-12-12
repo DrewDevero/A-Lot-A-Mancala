@@ -47,10 +47,16 @@ function alternatePlayer() {
     if(playerOne === true) {
         playerMove(0);
         $(".pOnePots").off("click");
+        // prevents capture pots from being manipulated
+        $("#playerOneCapture").off("click");
+        $("#playerTwoCapture").off("click");
         return playerOne = false;
     } else {
         playerMove(0);
         $(".pTwoPots").off("click");
+        // prevents capture pots from being manipulated
+        $("#playerOneCapture").off("click");
+        $("#playerTwoCapture").off("click");
         return playerOne = true;
     }
 };
@@ -85,6 +91,9 @@ function playerMove(choice) {
                 $("#playerOneCapture").val(playerOneCurrent + addedValues)
             } */
         }
+        if(i >= 8) {
+            captureOpponent();
+        }
         if(parseInt($("input[type=submit]").eq(choice).val()) === 0) {
             "";
         } else {
@@ -105,24 +114,22 @@ $("#coinToss").one("click", () => {
     let coinToss = Math.random();
         if(coinToss > 0.5) {
             playerMove(0);
+            $("#playerOneCapture").off("click"); // prevents pOne capture pot from being manipulated
+            $("#playerTwoCapture").off("click"); // prevents pTwo capture pot from being manipulated
             $(".pTwoPots").off("click");
             $("#coinToss").html("Player One Starts");
             setTimeout(() => $("#coinToss").html("Mancala"), 3000);
             return playerOne = true;
         } else {
             playerMove(0);
+            $("#playerOneCapture").off("click"); // prevents pOne capture pot from being manipulated
+            $("#playerTwoCapture").off("click"); // prevents pTwo capture pot from being manipulated
             $(".pOnePots").off("click");
             $("#coinToss").html("Player Two Starts");
             setTimeout(() => $("#coinToss").html("Mancala"), 3000);
             return playerOne = false;
         }
 })
-
-
-// prevents capture pots from being manipulated
-
-$("#playerOneCapture").off("click");
-$("#playerTwoCapture").off("click");
 
 // make pOne pots track to player one
 // make pTwo pots track to player two
@@ -133,3 +140,18 @@ $("#playerTwoCapture").off("click");
 // add that total to the capture pot of the currently tracked player
 // make pot and pot across (eg. add pOne2 to pTwo5) === 0
 
+function captureOpponent() {
+    for(let i = 0; i < 6; i++) {
+        if(P_ONE[i].val() === "1" && P_TWO[i] !== "0") {
+            console.log("foo");
+            $("#playerOneCapture").val(P_ONE[i].val() + P_TWO[i].val());
+            P_ONE[i].val("0");
+            P_TWO[i].val("0");
+        } else if (P_TWO[i].val() === "1" && P_ONE[i] !== "0") {
+            console.log("bar")
+            $("#playerTwoCapture").val(P_TWO[i].val() + P_ONE[i].val());
+            P_TWO[i].val("0");
+            P_ONE[i].val("0");
+        }
+    }
+}
