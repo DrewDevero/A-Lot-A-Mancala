@@ -73,6 +73,11 @@ function playerMove(choice) {
         let i = valueOne;
         let next = choice + 1;
         let time = 300;
+        if(i >= 8 && playerOne === true) {
+            console.log("must skip pTwoCapture");
+        } else if(i >= 8 && playerOne === false) {
+            console.log("must skip pOneCapture");
+        }
 // add one to every adjacent pot
         while(i > 0) {      
             setTimeout(() => {
