@@ -68,17 +68,65 @@ function alternatePlayer() {
 // the mini-pot chosen new value = 0
 
 function playerMove(choice) {
-    $("input[type=submit]").eq(choice).click(()=> {
-        const valueOne = parseInt($("input[type=submit]").eq(choice).val());
+    let potSelected =  $("input[type=submit]").eq(choice);
+    potSelected.click(()=> {
+// value of selected pot
+        const valueOne = parseInt(potSelected.val());
         let i = valueOne;
+// the next pot to add to
         let next = choice + 1;
+//time it takes to add 1 to next pot
         let time = 300;
-        if(i >= 8 && playerOne === true) {
-            console.log("must skip pTwoCapture");
-        } else if(i >= 8 && playerOne === false) {
-            console.log("must skip pOneCapture");
+
+// make pOne pots track to player one
+// make pTwo pots track to player two
+// when the final bead/++ is made to a pot
+// check if that pot is === to 1
+// if pot === to 1 && pot is on tracked player's side
+// add pot to pot across (eg. add pOne2 to pTwo5) to get a total
+// add that total to the capture pot of the currently tracked player
+// make pot and pot across (eg. add pOne2 to pTwo5) === 0
+
+/* function captureOpponent() {
+    let countDown = valueOne;
+    let addTime = 300
+    while(countDown > 0) {
+        setTimeout(() => {
+            console.log(countDown--); 
+        }, addTime);
+    addTime += 300;
+    countDown--;
+    }
+    setInterval(() => {
+        if(countDown === 0) {
+            console.log("yep")
+            for(let j = 0; j < 6; j++) {
+                if(P_ONE[j].val() === "1" && P_TWO[j] !== "0") {
+                    console.log("foo");
+                    $("#playerOneCapture").val(P_ONE[j].val() + P_TWO[j].val());
+                    P_ONE[j].val("0");
+                    P_TWO[j].val("0");
+                } else if (P_TWO[j].val() === "1" && P_ONE[j] !== "0") {
+                    console.log("bar")
+                    $("#playerTwoCapture").val(P_TWO[j].val() + P_ONE[j].val());
+                    P_TWO[j].val("0");
+                    P_ONE[j].val("0");
+                }
+            }
         }
-// add one to every adjacent pot
+    }, 300); 
+} */
+
+//if the amount of moves to be made is equal or exceeds 8
+//apply capture opponent pots function
+//apply skip opponent capture pot on player move function
+
+        /* if(i >= 8) {
+            captureOpponent();
+            console.log("yo")
+        } */
+
+//add one to every adjacent pot
         while(i > 0) {      
             setTimeout(() => {
                 const valueNext = parseInt($("input[type=submit]").eq(next).val());
@@ -88,48 +136,24 @@ function playerMove(choice) {
                 if(next === $("input[type=submit]").length) {
                     next = 0;
                 }
+                // skip over the opponents capture pot when adding 1 to adjacent pots
+                if(playerOne === false && $("input[type=submit]").eq(next)[0].id === $("#playerTwoCapture")[0].id) {
+                    next = 0;
+                } else if (playerOne === true && $("input[type=submit]").eq(next)[0].id === $("#playerOneCapture")[0].id) {
+                    next++;
+                }
             }, time);
             time += 300;
             i--;
         }
-        // make pOne pots track to player one
-        // make pTwo pots track to player two
-        // when the final bead/++ is made to a pot
-        // check if that pot is === to 1
-        // if pot === to 1 && pot is on tracked player's side
-        // add pot to pot across (eg. add pOne2 to pTwo5) to get a total
-        // add that total to the capture pot of the currently tracked player
-        // make pot and pot across (eg. add pOne2 to pTwo5) === 0
 
-        function captureOpponent() {
-            let countDownToCapture = i;
-            while(countDownToCapture > 0) {
-                setTimeout(() => {
-                    if(P_ONE[i].val() === "1" && P_TWO[i] !== "0") {
-                        console.log("foo");
-                        $("#playerOneCapture").val(P_ONE[i].val() + P_TWO[i].val());
-                        P_ONE[i].val("0");
-                        P_TWO[i].val("0");
-                    } else if (P_TWO[i].val() === "1" && P_ONE[i] !== "0") {
-                        console.log("bar")
-                        $("#playerTwoCapture").val(P_TWO[i].val() + P_ONE[i].val());
-                        P_TWO[i].val("0");
-                        P_ONE[i].val("0");
-                    }
-                }, 300);
-            time += 300;
-            countDownToCapture--;
-            }
-        }
-        if(i >= 8) {
-            captureOpponent();
-        }
-        if(parseInt($("input[type=submit]").eq(choice).val()) === 0) {
+//apply alternate player function
+        if(parseInt(potSelected.val()) === 0) {
             "";
         } else {
             alternatePlayer();
         }
-        $("input[type=submit]").eq(choice).val("0");
+        potSelected.val("0");
         return playerOne;
     })
     if (choice < $("input[type=submit]").length - 2) {
