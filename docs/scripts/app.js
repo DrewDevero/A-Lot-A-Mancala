@@ -86,10 +86,35 @@ function playerMove(choice) {
             }, time);
             time += 300;
             i--;
-            /* if(i === 0 && parseInt($("input[type=submit]").eq(next).val(addedValues)) === 1 && $(".pTwoPots").off("click") === true) {
-                let playerOneCurrent = parseInt($("#playerOneCapture").val())
-                $("#playerOneCapture").val(playerOneCurrent + addedValues)
-            } */
+        }
+        // make pOne pots track to player one
+        // make pTwo pots track to player two
+        // when the final bead/++ is made to a pot
+        // check if that pot is === to 1
+        // if pot === to 1 && pot is on tracked player's side
+        // add pot to pot across (eg. add pOne2 to pTwo5) to get a total
+        // add that total to the capture pot of the currently tracked player
+        // make pot and pot across (eg. add pOne2 to pTwo5) === 0
+
+        function captureOpponent() {
+            let countDownToCapture = i;
+            while(countDownToCapture > 0) {
+                setTimeout(() => {
+                    if(P_ONE[i].val() === "1" && P_TWO[i] !== "0") {
+                        console.log("foo");
+                        $("#playerOneCapture").val(P_ONE[i].val() + P_TWO[i].val());
+                        P_ONE[i].val("0");
+                        P_TWO[i].val("0");
+                    } else if (P_TWO[i].val() === "1" && P_ONE[i] !== "0") {
+                        console.log("bar")
+                        $("#playerTwoCapture").val(P_TWO[i].val() + P_ONE[i].val());
+                        P_TWO[i].val("0");
+                        P_ONE[i].val("0");
+                    }
+                }, 300);
+            time += 300;
+            countDownToCapture--;
+            }
         }
         if(i >= 8) {
             captureOpponent();
@@ -130,28 +155,3 @@ $("#coinToss").one("click", () => {
             return playerOne = false;
         }
 })
-
-// make pOne pots track to player one
-// make pTwo pots track to player two
-// when the final bead/++ is made to a pot
-// check if that pot is === to 1
-// if pot === to 1 && pot is on tracked player's side
-// add pot to pot across (eg. add pOne2 to pTwo5) to get a total
-// add that total to the capture pot of the currently tracked player
-// make pot and pot across (eg. add pOne2 to pTwo5) === 0
-
-function captureOpponent() {
-    for(let i = 0; i < 6; i++) {
-        if(P_ONE[i].val() === "1" && P_TWO[i] !== "0") {
-            console.log("foo");
-            $("#playerOneCapture").val(P_ONE[i].val() + P_TWO[i].val());
-            P_ONE[i].val("0");
-            P_TWO[i].val("0");
-        } else if (P_TWO[i].val() === "1" && P_ONE[i] !== "0") {
-            console.log("bar")
-            $("#playerTwoCapture").val(P_TWO[i].val() + P_ONE[i].val());
-            P_TWO[i].val("0");
-            P_ONE[i].val("0");
-        }
-    }
-}
