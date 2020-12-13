@@ -98,26 +98,32 @@ function playerMove(choice) {
                 }
                 if(playerOne === false) {
                     let nextToCheck = $("input[type=submit]").eq(next)[0].id;
-                    let secondToCheck;
                     if(nextToCheck === P_TWO[5].attr("id")) {
                         console.log(nextToCheck);
-                        setInterval(() => {secondToCheck = $("input[type=submit]").eq(next)[0].id}, 300);
-                        console.log(secondToCheck);
                     }
-                    if(secondToCheck === P_ONE[0].attr("id") /* P_ONE[j].val() === "1" && P_TWO[j] !== "0" */) {
+                    let secondToCheck = $("input[type=submit]").eq(next)[0].id;
+                    // if on the last move - i === 1
+                    // if next value will be === 1
+                    // parallel value !== 0
+                    // add next value and parallel value
+                    // place total in player that moved capture pot
+                    if(secondToCheck === P_ONE[0].attr("id") /* && i === 0 */ /* && $("input[type=submit]").eq(next).val(addedValues) === 1 */ /* P_ONE[j].val() === "1" && P_TWO[j] !== "0" */) {
                         console.log("foo");
                         /*  $("#playerOneCapture").val(P_ONE[j].val() + P_TWO[j].val());
                         P_ONE[j].val("0");
                         P_TWO[j].val("0"); */
+                    }
+                    let captureCheck = $("input[type=submit]").eq(next)[0].id;
+                    if(captureCheck === P_ONE[1].attr("id")) {
+                        console.log("may capture enemy pot");
                     }                   
                 } else if (playerOne === true) {
                     let nextToCheck = $("input[type=submit]").eq(next)[0].id;
-                    let secondToCheck;
                     if(nextToCheck === P_ONE[0].attr("id")) {
                         console.log(nextToCheck);
-                        secondToCheck = $("input[type=submit]").eq(next)[0].id;
                     }
-                    if (secondToCheck === P_TWO[5].attr("id") /* P_TWO[j].val() === "1" && P_ONE[j] !== "0" */) {
+                    let secondToCheck = $("input[type=submit]").eq(next)[0].id;
+                    if (secondToCheck === P_TWO[5].attr("id") && i === 0 /* P_TWO[j].val() === "1" && P_ONE[j] !== "0" */) {
                         console.log("bar")
                         /* $("#playerTwoCapture").val(P_TWO[j].val() + P_ONE[j].val());
                         P_TWO[j].val("0");
