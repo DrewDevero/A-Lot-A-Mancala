@@ -1,3 +1,9 @@
+:root {
+    --pOneBorder: 0.1rem solid green;
+    --pTwoBorder: 0.1rem solid red;
+    --pOneColor: lightblue;
+    --pTwoColor: lightcoral;
+}
 *{
     margin: 0;
     padding: 0;
@@ -34,7 +40,7 @@ header>h1 {
 }
 #playerOne {
     margin: 1rem;
-    color: lightblue;
+    color: var(--pOneColor);
     text-align: center;
     font-family: 'Ariel';
     font-weight: bolder;
@@ -46,7 +52,7 @@ header>h1 {
 }
 #playerTwo {
     margin: 1rem;
-    color: lightcoral;
+    color: var(--pTwoColor);
     text-align: center;
     font-family: 'Ariel';
     font-weight: bolder;
@@ -82,14 +88,16 @@ input {
 #playerOneCapture {
     grid-area: playerOneCapture;
     color: black;
-    background: lightblue;
-    outline: 0.1rem solid green;
+    background: var(--pOneColor);
+    border: 0.2rem solid green;
+    border-radius: 0% 50% 50% 0%;
 }
 #playerTwoCapture {
     grid-area: playerTwoCapture;
     color: white;
-    background: lightcoral;
-    outline: 0.1rem solid red;
+    background: var(--pTwoColor);
+    border: 0.2rem solid red;
+    border-radius: 50% 0% 0% 50%;
 }
 .miniPots {
     outline: 0.1rem solid black;
@@ -98,62 +106,74 @@ input {
 #pOne1 {
     grid-area: pOne1;
     color: black;
-    background: lightblue;
+    background: var(--pOneColor);
+    border: var(--pOneBorder);
 }
 #pOne2 {
     grid-area: pOne2;
     color: black;
-    background: lightblue;
+    background: var(--pOneColor);
+    border: var(--pOneBorder);
 }
 #pOne3 {
     grid-area: pOne3;
     color: black;
-    background: lightblue;
+    background: var(--pOneColor);
+    border: var(--pOneBorder);
 }
 #pOne4 {
     grid-area: pOne4;
     color: black;
-    background: lightblue;
+    background: var(--pOneColor);
+    border: var(--pOneBorder);
 }
 #pOne5 {
     grid-area: pOne5;
     color: black;
-    background: lightblue;
+    background: var(--pOneColor);
+    border: var(--pOneBorder);
 }
 #pOne6 {
     grid-area: pOne6;
     color: black;
-    background: lightblue;
+    background: var(--pOneColor);
+    border: var(--pOneBorder);
 }
 #pTwo1 {  
     grid-area: pTwo1;
     color: white;
-    background: lightcoral;
+    background: var(--pTwoColor);
+    border: var(--pTwoBorder);
 }
 #pTwo2 {  
     grid-area: pTwo2;
     color: white;
-    background: lightcoral;
+    background: var(--pTwoColor);
+    border: var(--pTwoBorder);
 }
 #pTwo3 {  
     grid-area: pTwo3;
     color: white;
-    background: lightcoral;
+    background: var(--pTwoColor);
+    border: var(--pTwoBorder);
 }
 #pTwo4 {  
     grid-area: pTwo4;
     color: white;
-    background: lightcoral;
+    background: var(--pTwoColor);
+    border: var(--pTwoBorder);
 }
 #pTwo5 {  
     grid-area: pTwo5;
     color: white;
-    background: lightcoral;
+    background: var(--pTwoColor);
+    border: var(--pTwoBorder);
 }
 #pTwo6 {  
     grid-area: pTwo6;
     color: white;
-    background: lightcoral;
+    background: var(--pTwoColor);
+    border: var(--pTwoBorder);
 }
 #theGameSpacing {
     height: 100%;
@@ -164,7 +184,6 @@ input {
     grid-template-areas:
         "playerTwoCapture pTwo6 pTwo5 pTwo4 pTwo3 pTwo2 pTwo1 playerOneCapture"
         "playerTwoCapture pOne1 pOne2 pOne3 pOne4 pOne5 pOne6 playerOneCapture";
-    border: solid lightgreen;
 }
 .coinTossSection {
     display: flex;

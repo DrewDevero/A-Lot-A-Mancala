@@ -79,7 +79,8 @@ function playerMove(choice) {
         let next = choice + 1;
 //time it takes to add 1 to next pot
         let time = 300;
-
+//countDown to capture check
+        let countDown = valueOne;
 //add one to every adjacent pot
         while(i > 0) {      
             setTimeout(() => {
@@ -96,38 +97,61 @@ function playerMove(choice) {
                 } else if (playerOne === true && $("input[type=submit]").eq(next)[0].id === $("#playerOneCapture")[0].id) {
                     next++;
                 }
+                countDown--;
                 if(playerOne === false) {
+                    // if player has reched enemy board
                     let nextToCheck = $("input[type=submit]").eq(next)[0].id;
                     if(nextToCheck === P_TWO[5].attr("id")) {
                         console.log(nextToCheck);
                     }
+                    // if player has reached back around to their board
                     let secondToCheck = $("input[type=submit]").eq(next)[0].id;
+                    if(secondToCheck === P_ONE[0].attr("id")) {
+                        console.log("foo");
+                    }
                     // if on the last move - i === 1
                     // if next value will be === 1
                     // parallel value !== 0
                     // add next value and parallel value
                     // place total in player that moved capture pot
-                    if(secondToCheck === P_ONE[0].attr("id") /* && i === 0 */ /* && $("input[type=submit]").eq(next).val(addedValues) === 1 */ /* P_ONE[j].val() === "1" && P_TWO[j] !== "0" */) {
-                        console.log("foo");
-                        /*  $("#playerOneCapture").val(P_ONE[j].val() + P_TWO[j].val());
-                        P_ONE[j].val("0");
-                        P_TWO[j].val("0"); */
+                    let toCapture = $("input[type=submit]").eq(next-1)[0].id;
+                    for(let j = 0; j < 6; j++) {
+                        if(toCapture === P_ONE[j].attr("id")) {
+                            if(countDown === 0 && parseInt(P_ONE[j].val()) === 1 &&parseInt(P_TWO[j].val()) !== 0) {
+                                console.log(P_ONE[j].val())
+                                $("#playerOneCapture").val(parseInt(P_ONE[j].val()) + parseInt(P_TWO[j].val()));
+                                P_ONE[j].val("0");
+                                P_TWO[j].val("0");
+                            }
+                        }
                     }
-                    let captureCheck = $("input[type=submit]").eq(next)[0].id;
-                    if(captureCheck === P_ONE[1].attr("id")) {
-                        console.log("may capture enemy pot");
-                    }                   
+                // same side check and capture rules for player two                   
                 } else if (playerOne === true) {
+                    // if player has reched enemy board
                     let nextToCheck = $("input[type=submit]").eq(next)[0].id;
-                    if(nextToCheck === P_ONE[0].attr("id")) {
+                    if(nextToCheck === P_ONE[1].attr("id")) {
                         console.log(nextToCheck);
                     }
+                    // if player has reached back around to their board
                     let secondToCheck = $("input[type=submit]").eq(next)[0].id;
-                    if (secondToCheck === P_TWO[5].attr("id") && i === 0 /* P_TWO[j].val() === "1" && P_ONE[j] !== "0" */) {
-                        console.log("bar")
-                        /* $("#playerTwoCapture").val(P_TWO[j].val() + P_ONE[j].val());
-                        P_TWO[j].val("0");
-                        P_ONE[j].val("0"); */
+                    if(secondToCheck === P_TWO[5].attr("id")) {
+                        console.log("bar");
+                    }
+                    // if on the last move - i === 1
+                    // if next value will be === 1
+                    // parallel value !== 0
+                    // add next value and parallel value
+                    // place total in player that moved capture pot
+                    let toCapture = $("input[type=submit]").eq(next-1)[0].id;
+                    for(let k = 0; k < 6; k++) {
+                        if(toCapture === P_TWO[k].attr("id")) {
+                            if(countDown === 0 && parseInt(P_TWO[k].val()) === 1 &&parseInt(P_ONE[k].val()) !== 0) {
+                                console.log(P_TWO[k].val())
+                                $("#playerTwoCapture").val(parseInt(P_TWO[k].val()) + parseInt(P_ONE[k].val()));
+                                P_TWO[k].val("0");
+                                P_ONE[k].val("0");
+                            }
+                        }
                     }
                 }
             }, time);
