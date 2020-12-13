@@ -78,54 +78,6 @@ function playerMove(choice) {
 //time it takes to add 1 to next pot
         let time = 300;
 
-// make pOne pots track to player one
-// make pTwo pots track to player two
-// when the final bead/++ is made to a pot
-// check if that pot is === to 1
-// if pot === to 1 && pot is on tracked player's side
-// add pot to pot across (eg. add pOne2 to pTwo5) to get a total
-// add that total to the capture pot of the currently tracked player
-// make pot and pot across (eg. add pOne2 to pTwo5) === 0
-
-/* function captureOpponent() {
-    let countDown = valueOne;
-    let addTime = 300
-    while(countDown > 0) {
-        setTimeout(() => {
-            console.log(countDown--); 
-        }, addTime);
-    addTime += 300;
-    countDown--;
-    }
-    setInterval(() => {
-        if(countDown === 0) {
-            console.log("yep")
-            for(let j = 0; j < 6; j++) {
-                if(P_ONE[j].val() === "1" && P_TWO[j] !== "0") {
-                    console.log("foo");
-                    $("#playerOneCapture").val(P_ONE[j].val() + P_TWO[j].val());
-                    P_ONE[j].val("0");
-                    P_TWO[j].val("0");
-                } else if (P_TWO[j].val() === "1" && P_ONE[j] !== "0") {
-                    console.log("bar")
-                    $("#playerTwoCapture").val(P_TWO[j].val() + P_ONE[j].val());
-                    P_TWO[j].val("0");
-                    P_ONE[j].val("0");
-                }
-            }
-        }
-    }, 300); 
-} */
-
-//if the amount of moves to be made is equal or exceeds 8
-//apply capture opponent pots function
-//apply skip opponent capture pot on player move function
-
-        /* if(i >= 8) {
-            captureOpponent();
-            console.log("yo")
-        } */
-
 //add one to every adjacent pot
         while(i > 0) {      
             setTimeout(() => {
@@ -142,11 +94,39 @@ function playerMove(choice) {
                 } else if (playerOne === true && $("input[type=submit]").eq(next)[0].id === $("#playerOneCapture")[0].id) {
                     next++;
                 }
+                if(playerOne === false) {
+                     P_TWO.forEach((item) => {
+                        if(item === $("input[type=submit]").eq(next).id) {
+                            console.log("yep")
+                                for(let j = 0; j < 6; j++) {
+                                    if(P_ONE[j].val() === "1" && P_TWO[j] !== "0") {
+                                        console.log("foo");
+                                        $("#playerOneCapture").val(P_ONE[j].val() + P_TWO[j].val());
+                                        P_ONE[j].val("0");
+                                        P_TWO[j].val("0");
+                                    } 
+                                }
+                            }
+                        })
+                } else if (playerOne === true) {
+                    P_ONE.forEach((item) => {
+                        if(item === $("input[type=submit]").eq(next).id) {
+                            console.log("nope")
+                            for(let j = 0; j < 6; j++) {
+                                if (P_TWO[j].val() === "1" && P_ONE[j] !== "0") {
+                                    console.log("bar")
+                                    $("#playerTwoCapture").val(P_TWO[j].val() + P_ONE[j].val());
+                                    P_TWO[j].val("0");
+                                    P_ONE[j].val("0");
+                                }
+                            }
+                        }
+                    })
+                }
             }, time);
-            time += 300;
+            time += 300;           
             i--;
         }
-
 //apply alternate player function
         if(parseInt(potSelected.val()) === 0) {
             "";
@@ -184,3 +164,31 @@ $("#coinToss").one("click", () => {
             return playerOne = false;
         }
 })
+
+
+// If, after the final move (i = 0)
+// the current players last move pot total === 1
+// and the opponent's parallel pot !== 0
+// add the player pot and opponent parallel pot together
+// add total to the player's capture pot
+// set the player pot and the opponent's parallel pot = 0
+            
+            /* setTimeout(() => {
+                setTimeout(() => {
+                    console.log("yep")
+                    for(let j = 0; j < 6; j++) {
+                        if(P_ONE[j].val() === "1" && P_TWO[j] !== "0") {
+                            console.log("foo");
+                            $("#playerOneCapture").val(P_ONE[j].val() + P_TWO[j].val());
+                            P_ONE[j].val("0");
+                            P_TWO[j].val("0");
+                        } else if (P_TWO[j].val() === "1" && P_ONE[j] !== "0") {
+                            console.log("bar")
+                            $("#playerTwoCapture").val(P_TWO[j].val() + P_ONE[j].val());
+                            P_TWO[j].val("0");
+                            P_ONE[j].val("0");
+                        }
+                    }
+                }, time);
+            }, 500); */
+        
