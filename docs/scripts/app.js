@@ -33,8 +33,8 @@
 
 "use strict;"
 
-const P_ONE = [$("#pOne6"), $("#pOne5"), $("#pOne4"), $("#pOne3"), $("#pOne2"), $("#pOne1")]
-const P_TWO = [$("#pTwo1"), $("#pTwo2"), $("#pTwo3"), $("#pTwo4"), $("#pTwo5"), $("#pTwo6")]
+const P_ONE = [$("#pOne1"), $("#pOne2"), $("#pOne3"), $("#pOne4"), $("#pOne5"), $("#pOne6")]
+const P_TWO = [$("#pTwo6"), $("#pTwo5"), $("#pTwo4"), $("#pTwo3"), $("#pTwo2"), $("#pTwo1")]
 let playerOne;
 
 // prevents reload of page upon submit button click
@@ -98,31 +98,30 @@ function playerMove(choice) {
                 }
                 if(playerOne === false) {
                     let nextToCheck = $("input[type=submit]").eq(next)[0].id;
-                    if(nextToCheck === P_TWO[0].attr("id") || nextToCheck === P_TWO[1].attr("id") || nextToCheck === P_TWO[2].attr("id") || nextToCheck === P_TWO[3].attr("id") || nextToCheck === P_TWO[4].attr("id") || nextToCheck === P_TWO[5].attr("id")) {
-                        console.log(P_TWO[0].attr("id"));
+                    let secondToCheck;
+                    if(nextToCheck === P_TWO[5].attr("id")) {
                         console.log(nextToCheck);
-                        for(let j = 0; j < 6; j++) {
-                            if(P_ONE[j].val() === "1" && P_TWO[j] !== "0") {
-                                console.log("foo");
-                                $("#playerOneCapture").val(P_ONE[j].val() + P_TWO[j].val());
-                                P_ONE[j].val("0");
-                                P_TWO[j].val("0");
-                            } 
-                        }
-                    }                        
+                        setInterval(() => {secondToCheck = $("input[type=submit]").eq(next)[0].id}, 300);
+                        console.log(secondToCheck);
+                    }
+                    if(secondToCheck === P_ONE[0].attr("id") /* P_ONE[j].val() === "1" && P_TWO[j] !== "0" */) {
+                        console.log("foo");
+                        /*  $("#playerOneCapture").val(P_ONE[j].val() + P_TWO[j].val());
+                        P_ONE[j].val("0");
+                        P_TWO[j].val("0"); */
+                    }                   
                 } else if (playerOne === true) {
                     let nextToCheck = $("input[type=submit]").eq(next)[0].id;
-                    if(nextToCheck === P_ONE[0].attr("id") || nextToCheck === P_ONE[1].attr("id") || nextToCheck === P_ONE[2].attr("id") || nextToCheck === P_ONE[3].attr("id") || nextToCheck === P_ONE[4].attr("id") || nextToCheck === P_ONE[5].attr("id")) {
-                        console.log(P_ONE[0].attr("id"));
+                    let secondToCheck;
+                    if(nextToCheck === P_ONE[0].attr("id")) {
                         console.log(nextToCheck);
-                        for(let j = 0; j < 6; j++) {
-                            if (P_TWO[j].val() === "1" && P_ONE[j] !== "0") {
-                                console.log("bar")
-                                $("#playerTwoCapture").val(P_TWO[j].val() + P_ONE[j].val());
-                                P_TWO[j].val("0");
-                                P_ONE[j].val("0");
-                            }
-                        }
+                        secondToCheck = $("input[type=submit]").eq(next)[0].id;
+                    }
+                    if (secondToCheck === P_TWO[5].attr("id") /* P_TWO[j].val() === "1" && P_ONE[j] !== "0" */) {
+                        console.log("bar")
+                        /* $("#playerTwoCapture").val(P_TWO[j].val() + P_ONE[j].val());
+                        P_TWO[j].val("0");
+                        P_ONE[j].val("0"); */
                     }
                 }
             }, time);
