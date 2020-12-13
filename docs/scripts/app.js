@@ -31,6 +31,8 @@
 // Only player field that's currently in play is active
 // Highlight current player's name
 
+"use strict;"
+
 const P_ONE = [$("#pOne6"), $("#pOne5"), $("#pOne4"), $("#pOne3"), $("#pOne2"), $("#pOne1")]
 const P_TWO = [$("#pTwo1"), $("#pTwo2"), $("#pTwo3"), $("#pTwo4"), $("#pTwo5"), $("#pTwo6")]
 let playerOne;
