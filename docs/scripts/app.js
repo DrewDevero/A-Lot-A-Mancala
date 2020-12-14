@@ -41,6 +41,8 @@ $(() => {
     const $OPEN_RULES = $("#openModal");
     const $MODAL = $("#modal");
     const $CLOSE_RULES = $("#close");
+    const $FLIP_ONE = $("#flipPlayerOne");
+    const $FLIP_TWO = $("#flipPlayerTwo");
 
     // open modal
 
@@ -290,5 +292,51 @@ $(() => {
             }
         }, 2600)
     }
+
+    // play against the computer
+
+    // flip player 2 numbers for ipad or smart phone two player local play
+
+    let rotateOne = false;
+    let rotateTwo = false;
+
+    const FLIP_P_ONE = () => {
+        if(rotateOne === false) {
+            P_ONE.forEach((item) => {
+                item.css({
+                    "transform" : "rotateX(180deg)"
+                });
+            })
+            return rotateOne = true;
+        } else {
+            P_ONE.forEach((item) => {
+            item.css({
+                "transform" : "rotateX(360deg)"
+            });
+        })
+            return rotateOne = false;
+        }
+    };
+
+    const FLIP_P_TWO = () => {
+        if(rotateTwo === false) {
+            P_TWO.forEach((item) => { 
+                item.css({
+                    "transform" : "rotateX(180deg)"
+                })
+            })
+            return rotateTwo = true;
+        } else {
+            P_TWO.forEach((item) => { 
+                item.css({
+                    "transform" : "rotateX(360deg)"
+                })
+            })
+            return rotateTwo = false;
+        }
+    };
+
+    $FLIP_ONE.on("click", FLIP_P_ONE);
+    $FLIP_TWO.on("click", FLIP_P_TWO);
 
 });
