@@ -60,7 +60,7 @@ $(() => {
 
     // auto open model on page landing
 
-    setTimeout(OPEN_MODAL, 5000);
+    setTimeout(OPEN_MODAL, 3000);
 
     // prevents reload of page upon submit button click
 
