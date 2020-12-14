@@ -224,7 +224,15 @@ function pOneEndGame() {
             for(let l = 0; l < 6; l++) {
                 P_ONE[l].val("0");
             }
-            setTimeout(() => alert("Player One Wins!"), 500);
+            setTimeout(() => {
+            if(parseInt($("#playerOneCapture").val()) > parseInt($("#playerTwoCapture").val())) {
+                alert("Player One Wins!");
+            } else if(parseInt($("#playerTwoCapture").val()) > parseInt($("#playerOneCapture").val())) {
+                alert("Player Two Wins!");
+            } else {
+                alert("It's a tie!");
+            }
+            }, 500);
         }
     }, 2600)
 }
@@ -244,7 +252,15 @@ function pTwoEndGame() {
             for(let m = 0; m < 6; m++) {
                 P_TWO[m].val("0");
             }
-            setTimeout(() => alert("Player Two Wins!"), 500);
+            setTimeout(() => {
+            if(parseInt($("#playerOneCapture").val()) > parseInt($("#playerTwoCapture").val())) {
+                alert("Player One Wins!");
+            } else if(parseInt($("#playerTwoCapture").val()) > parseInt($("#playerOneCapture").val())) {
+                alert("Player Two Wins!");
+            } else {
+                alert("It's a tie!");
+            }
+            }, 500);
         }
     }, 2600)
 }
