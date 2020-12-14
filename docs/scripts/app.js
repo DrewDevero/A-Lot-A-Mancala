@@ -43,6 +43,8 @@ $(() => {
     const $CLOSE_RULES = $("#close");
     const $FLIP_ONE = $("#flipPlayerOne");
     const $FLIP_TWO = $("#flipPlayerTwo");
+    const $PVP = $("#playerVsPlayer");
+    const $PVCP = $("#playerVsComputer");
 
     // open modal
 
@@ -306,7 +308,7 @@ $(() => {
             }
         }, 2600)
     }
-
+  
     // play against the computer
 
 

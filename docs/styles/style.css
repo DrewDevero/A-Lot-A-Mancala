@@ -3,6 +3,8 @@
     --pTwoBorder: 0.1rem solid rgba(255, 0, 0, 0.425);
     --pOneColor: linear-gradient(90deg, rgb(34, 52, 245), lightblue, rgb(34, 52, 245));
     --pTwoColor: linear-gradient(90deg, rgb(104, 104, 104), silver, rgb(104, 104, 104));
+    --pOneFontFamily: /* Verdana, "sans-serif" */ Garamond, serif;
+    --pTwoFontFamily: "Times New Roman", serif;
     --boardShadow: 0 0.15rem 0.15rem rgba(0, 0, 0, 0.2);
 }
 *{
@@ -125,6 +127,8 @@ input {
     border-radius: 0% 50% 50% 0%;
     outline: none;
     box-shadow: var(--boardShadow);
+    font-family: var(--pOneFontFamily);
+    font-weight: bolder;
     transition: transform 1s ease-in-out;
 }
 #playerTwoCapture {
@@ -135,85 +139,98 @@ input {
     border-radius: 50% 0% 0% 50%;
     outline: none;
     box-shadow: var(--boardShadow);
+    font-family: var(--pTwoFontFamily);
+    font-weight: bold;
     transition: transform 1s ease-in-out;
 }
 .miniPots {
     outline: 0.1rem solid black;
     cursor: pointer;
     box-shadow: var(--boardShadow);
+    font-weight: bold;
     transition: transform 1s ease-in-out;
 }
 #pOne1 {
     grid-area: pOne1;
     color: black;
-    /* background-image: url("../assets/gem_one_test.png"); */
-    /* background-position: center; */
+    font-family: var(--pOneFontFamily);
     background: var(--pOneColor);
     border: var(--pOneBorder);
 }
 #pOne2 {
     grid-area: pOne2;
     color: black;
+    font-family: var(--pOneFontFamily);
     background: var(--pOneColor);
     border: var(--pOneBorder);
 }
 #pOne3 {
     grid-area: pOne3;
     color: black;
+    font-family: var(--pOneFontFamily);
     background: var(--pOneColor);
     border: var(--pOneBorder);
 }
 #pOne4 {
     grid-area: pOne4;
     color: black;
+    font-family: var(--pOneFontFamily);
     background: var(--pOneColor);
     border: var(--pOneBorder);
 }
 #pOne5 {
     grid-area: pOne5;
     color: black;
+    font-family: var(--pOneFontFamily);
     background: var(--pOneColor);
     border: var(--pOneBorder);
 }
 #pOne6 {
     grid-area: pOne6;
     color: black;
+    font-family: var(--pOneFontFamily);
     background: var(--pOneColor);
     border: var(--pOneBorder);
 }
 #pTwo1 {  
     grid-area: pTwo1;
     color: white;
+    font-family: var(--pTwoFontFamily);
     background: var(--pTwoColor);
     border: var(--pTwoBorder);
 }
 #pTwo2 {  
     grid-area: pTwo2;
     color: white;
+    font-family: var(--pTwoFontFamily);
     background: var(--pTwoColor);
     border: var(--pTwoBorder);
 }
 #pTwo3 {  
     grid-area: pTwo3;
     color: white;
+    font-family: var(--pTwoFontFamily);
     background: var(--pTwoColor);
     border: var(--pTwoBorder);
 }
 #pTwo4 {  
     grid-area: pTwo4;
     color: white;
+    font-family: var(--pTwoFontFamily);
     background: var(--pTwoColor);
     border: var(--pTwoBorder);
 }
 #pTwo5 {  
     grid-area: pTwo5;
     color: white;
+    font-family: var(--pTwoFontFamily);
     background: var(--pTwoColor);
     border: var(--pTwoBorder);
 }
 #pTwo6 {  
     grid-area: pTwo6;
     color: white;
+    font-family: var(--pTwoFontFamily);
     background: var(--pTwoColor);
     border: var(--pTwoBorder);
 }
