@@ -115,13 +115,15 @@ function playerMove(choice) {
                     // add next value and parallel value
                     // place total in player that moved capture pot
                     let toCapture = $("input[type=submit]").eq(next-1)[0].id;
-                    for(let j = 0; j < 6; j++) {
-                        if(toCapture === P_ONE[j].attr("id")) {
-                            if(countDown === 0 && parseInt(P_ONE[j].val()) === 1 &&parseInt(P_TWO[j].val()) !== 0) {
-                                console.log(P_ONE[j].val())
-                                $("#playerOneCapture").val(parseInt(P_ONE[j].val()) + parseInt(P_TWO[j].val()));
-                                P_ONE[j].val("0");
-                                P_TWO[j].val("0");
+                    if(valueOne > 5) {
+                        for(let j = 0; j < 6; j++) {
+                            if(toCapture === P_ONE[j].attr("id")) {
+                                if(countDown === 0 && parseInt(P_ONE[j].val()) === 1 && parseInt(P_TWO[j].val()) !== 0) {
+                                    console.log(P_ONE[j].val())
+                                    $("#playerOneCapture").val(parseInt(P_ONE[j].val()) + parseInt(P_TWO[j].val()));
+                                    P_ONE[j].val("0");
+                                    P_TWO[j].val("0");
+                                }
                             }
                         }
                     }
@@ -142,14 +144,17 @@ function playerMove(choice) {
                     // parallel value !== 0
                     // add next value and parallel value
                     // place total in player that moved capture pot
+
                     let toCapture = $("input[type=submit]").eq(next-1)[0].id;
-                    for(let k = 0; k < 6; k++) {
-                        if(toCapture === P_TWO[k].attr("id")) {
-                            if(countDown === 0 && parseInt(P_TWO[k].val()) === 1 &&parseInt(P_ONE[k].val()) !== 0) {
-                                console.log(P_TWO[k].val())
-                                $("#playerTwoCapture").val(parseInt(P_TWO[k].val()) + parseInt(P_ONE[k].val()));
-                                P_TWO[k].val("0");
-                                P_ONE[k].val("0");
+                    if (valueOne > 5) {
+                        for(let k = 0; k < 6; k++) {
+                            if(toCapture === P_TWO[k].attr("id")) {
+                                if(countDown === 0 && parseInt(P_TWO[k].val()) === 1 && parseInt(P_ONE[k].val()) !== 0) {
+                                    console.log(P_TWO[k].val())
+                                    $("#playerTwoCapture").val(parseInt(P_TWO[k].val()) + parseInt(P_ONE[k].val()));
+                                    P_TWO[k].val("0");
+                                    P_ONE[k].val("0");
+                                }
                             }
                         }
                     }
@@ -163,6 +168,7 @@ function playerMove(choice) {
             "";
         } else {
             alternatePlayer();
+            endGame();
         }
         potSelected.val("0");
         return playerOne;
@@ -172,6 +178,7 @@ function playerMove(choice) {
     }
     return playerOne;
 }
+
 //Toss the coin (button click) to have p1 or p2 be chosen to go first. 50/50 (50/49.9999...) chance achieved with Math.random()
 
 $("#coinToss").one("click", () => {
@@ -196,30 +203,54 @@ $("#coinToss").one("click", () => {
         }
 })
 
+// End game
+// when it's the players turn and their side === 0 (all their mini-pots === 0)
+// all of opponents mini pot points gets added to their capture pot
+// whichever capture pot is higher
+// corresponds to the winning player
 
-// If, after the final move (i = 0)
-// the current players last move pot total === 1
-// and the opponent's parallel pot !== 0
-// add the player pot and opponent parallel pot together
-// add total to the player's capture pot
-// set the player pot and the opponent's parallel pot = 0
-            
-            /* setTimeout(() => {
-                setTimeout(() => {
-                    console.log("yep")
-                    for(let j = 0; j < 6; j++) {
-                        if(P_ONE[j].val() === "1" && P_TWO[j] !== "0") {
-                            console.log("foo");
-                            $("#playerOneCapture").val(P_ONE[j].val() + P_TWO[j].val());
-                            P_ONE[j].val("0");
-                            P_TWO[j].val("0");
-                        } else if (P_TWO[j].val() === "1" && P_ONE[j] !== "0") {
-                            console.log("bar")
-                            $("#playerTwoCapture").val(P_TWO[j].val() + P_ONE[j].val());
-                            P_TWO[j].val("0");
-                            P_ONE[j].val("0");
-                        }
-                    }
-                }, time);
-            }, 500); */
-        
+function pOneEndGame() {
+    let pOnePotsTotal = 1;
+    let pTwoPotsTotal = 1;
+    setTimeout(() => {
+    P_ONE.forEach((item) => {pOnePotsTotal+= parseInt(item.val())});
+    P_TWO.forEach((item) => {pTwoPotsTotal+= parseInt(item.val())});
+    return pOnePotsTotal, pTwoPotsTotal;
+    }, 2500)
+    setTimeout(() => {
+        if(playerOne === false && pTwoPotsTotal === 1) {
+            let pOneCapture = parseInt($("#playerOneCapture").val());
+            $("#playerTwoCapture").val(pOneCapture + pOnePotsTotal);
+            for(let l = 0; l < 6; l++) {
+                P_ONE[l].val("0");
+            }
+            setTimeout(() => alert("Player One Wins!"), 500);
+        }
+    }, 2600)
+}
+
+function pTwoEndGame() {
+    let pOnePotsTotal = 1;
+    let pTwoPotsTotal = 1;
+    setTimeout(() => {
+    P_ONE.forEach((item) => {pOnePotsTotal+= parseInt(item.val())});
+    P_TWO.forEach((item) => {pTwoPotsTotal+= parseInt(item.val())});
+    return pOnePotsTotal, pTwoPotsTotal;
+    }, 2500)
+    setTimeout(() => {
+        if(playerOne === true && pOnePotsTotal === 1) {
+            let pTwoCapture = parseInt($("#playerTwoCapture").val());
+            $("#playerTwoCapture").val(pTwoCapture + pTwoPotsTotal);
+            for(let m = 0; m < 6; m++) {
+                P_TWO[m].val("0");
+            }
+            setTimeout(() => alert("Player Two Wins!"), 500);
+        }
+    }, 2600)
+}
+function endGame() {
+    for(let n = 0; n < 6; n++) {
+        P_ONE[n].click(() => pOneEndGame());
+        P_TWO[n].click(() => pTwoEndGame());
+    }
+}

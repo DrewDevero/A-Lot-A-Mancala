@@ -91,6 +91,7 @@ input {
     background: var(--pOneColor);
     border: 0.2rem solid green;
     border-radius: 0% 50% 50% 0%;
+    outline: none;
 }
 #playerTwoCapture {
     grid-area: playerTwoCapture;
@@ -98,6 +99,7 @@ input {
     background: var(--pTwoColor);
     border: 0.2rem solid red;
     border-radius: 50% 0% 0% 50%;
+    outline: none;
 }
 .miniPots {
     outline: 0.1rem solid black;
