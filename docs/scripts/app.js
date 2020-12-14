@@ -55,7 +55,7 @@ $(() => {
     // close modal
 
     const CLOSE_MODAL = () => {
-        $MODAL.hide();
+        $MODAL.fadeOut(1000);
     }
 
     $CLOSE_RULES.on("click", CLOSE_MODAL);
