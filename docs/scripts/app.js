@@ -47,7 +47,7 @@ $(() => {
     // open modal
 
     const OPEN_MODAL = () => {
-        $MODAL.show();
+        $MODAL.fadeIn(2000);
     }
 
     $OPEN_RULES.on("click", OPEN_MODAL);
@@ -62,7 +62,7 @@ $(() => {
 
     // auto open model on page landing
 
-    setTimeout(OPEN_MODAL, 3000);
+    setTimeout(OPEN_MODAL, 2000);
 
     // prevents reload of page upon submit button click
 
@@ -217,16 +217,28 @@ $(() => {
                 $("#playerOneCapture").off("click"); // prevents pOne capture pot from being manipulated
                 $("#playerTwoCapture").off("click"); // prevents pTwo capture pot from being manipulated
                 $(".pTwoPots").off("click");
-                $("#coinToss").html("Player One Starts");
-                setTimeout(() => $("#coinToss").html("Mancala"), 3000);
+                $("#coinToss").fadeOut(2000, () => {
+                    $("#coinToss").html("Player One Starts");
+                }).fadeIn(2000);
+                setTimeout(() => {
+                    $("#coinToss").fadeOut(15000, () => {
+                        $("#coinToss").html("Mancala");
+                    }).fadeIn(2000)
+                , 3000});
                 return playerOne = true;
             } else {
                 playerMove(0);
                 $("#playerOneCapture").off("click"); // prevents pOne capture pot from being manipulated
                 $("#playerTwoCapture").off("click"); // prevents pTwo capture pot from being manipulated
                 $(".pOnePots").off("click");
-                $("#coinToss").html("Player Two Starts");
-                setTimeout(() => $("#coinToss").html("Mancala"), 3000);
+                $("#coinToss").fadeOut(2000, () => {
+                    $("#coinToss").html("Player Two Starts");
+                }).fadeIn(2000);
+                setTimeout(() => {
+                    $("#coinToss").fadeOut(15000, () => {
+                        $("#coinToss").html("Mancala");
+                    }).fadeIn(2000)
+                , 3000});
                 return playerOne = false;
             }
     })
@@ -261,6 +273,7 @@ $(() => {
                     alert("It's a tie!");
                 }
                 }, 500);
+                setTimeout(() => location.reload(), 10000);
             }
         }, 2600)
     }
@@ -289,13 +302,16 @@ $(() => {
                     alert("It's a tie!");
                 }
                 }, 500);
+                setTimeout(() => location.reload(), 10000);
             }
         }, 2600)
     }
 
     // play against the computer
 
-    // flip player 2 numbers for ipad or smart phone two player local play
+
+
+    // flip player mechanism for ipad or smart phone two player local play
 
     let rotateOne = false;
     let rotateTwo = false;
@@ -307,6 +323,9 @@ $(() => {
                     "transform" : "rotateX(180deg)"
                 });
             })
+            $("#playerOneCapture").css({
+                    "transform" : "rotateX(180deg)"
+                });
             return rotateOne = true;
         } else {
             P_ONE.forEach((item) => {
@@ -314,6 +333,9 @@ $(() => {
                 "transform" : "rotateX(360deg)"
             });
         })
+             $("#playerOneCapture").css({
+                    "transform" : "rotateX(360deg)"
+                });
             return rotateOne = false;
         }
     };
@@ -325,6 +347,9 @@ $(() => {
                     "transform" : "rotateX(180deg)"
                 })
             })
+             $("#playerTwoCapture").css({
+                    "transform" : "rotateX(180deg)"
+                });
             return rotateTwo = true;
         } else {
             P_TWO.forEach((item) => { 
@@ -332,6 +357,9 @@ $(() => {
                     "transform" : "rotateX(360deg)"
                 })
             })
+             $("#playerTwoCapture").css({
+                    "transform" : "rotateX(360deg)"
+                });
             return rotateTwo = false;
         }
     };
