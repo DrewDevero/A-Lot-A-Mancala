@@ -108,8 +108,9 @@ input {
 #pOne1 {
     grid-area: pOne1;
     color: black;
-    background-image: /* url("../assets/gem_one_test.png") */var(--pOneColor);
-    background-position: center;
+    /* background-image: url("../assets/gem_one_test.png"); */
+    /* background-position: center; */
+    background: var(--pOneColor);
     border: var(--pOneBorder);
 }
 #pOne2 {
