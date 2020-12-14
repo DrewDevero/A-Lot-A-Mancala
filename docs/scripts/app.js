@@ -73,6 +73,7 @@ $(() => {
     function alternatePlayer() {
         if(playerOne === true) {
             playerMove(0);
+            pOneEndGame();
             $(".pOnePots").off("click");
             // prevents capture pots from being manipulated
             $("#playerOneCapture").off("click");
@@ -80,6 +81,7 @@ $(() => {
             return playerOne = false;
         } else {
             playerMove(0);
+            pTwoEndGame();
             $(".pTwoPots").off("click");
             // prevents capture pots from being manipulated
             $("#playerOneCapture").off("click");
@@ -193,7 +195,6 @@ $(() => {
                 "";
             } else {
                 alternatePlayer();
-                endGame();
             }
             potSelected.val("0");
             return playerOne;
@@ -245,7 +246,7 @@ $(() => {
         setTimeout(() => {
             if(playerOne === false && pTwoPotsTotal === 1) {
                 let pOneCapture = parseInt($("#playerOneCapture").val());
-                $("#playerTwoCapture").val(pOneCapture + pOnePotsTotal);
+                $("#playerOneCapture").val(pOneCapture + pOnePotsTotal);
                 for(let l = 0; l < 6; l++) {
                     P_ONE[l].val("0");
                 }
@@ -288,12 +289,6 @@ $(() => {
                 }, 500);
             }
         }, 2600)
-    }
-    function endGame() {
-        for(let n = 0; n < 6; n++) {
-            P_ONE[n].click(() => pOneEndGame());
-            P_TWO[n].click(() => pTwoEndGame());
-        }
     }
 
 });
