@@ -11,6 +11,9 @@
     <title>Millennial Mancala</title>
 </head>
 <body>
+    <div id="openModal-position">
+        <button type="button" class="modal-buttons" id="openModal">game rules</button>
+    </div>
     <header>
         <h1>millennial mancala</h1>
     </header>
@@ -44,6 +47,24 @@
     </section>
     <section class="coinTossSection">
         <button id="coinToss">coin toss<br/>p1/p2</button>
+    </section>
+    <section>
+        <div id="modal">
+            <div id="modal-textbox">
+                <div class="center">
+                    <h1>lets play millennial mancala!</h1>
+                </div>
+                <p>1. *You* against *another player*<br/>(toss the coin to start).</p>
+                <p>2. Take turns shifting all beads in one of your mini pots over, leaving one in each adjacent pot (including the big pots).</p>
+                <p>3. If you have enough beads to go around to your oponent's mini-pots, do so.</p>
+                <p>4. If your last laid bead is across from an opponets filled mini pot, you capture their mini pot and your one bead and put those beads in your big pot!</p>
+                <p>5. When/if one player has no more beads in any of their mini-pots, the other play can put all of their mini-pot beads into their big pot!</p>
+                <p>6. The player with the most beads in their big pot wins!</p>
+                <div id="modal-footer">
+                    <button type="button" class="modal-buttons" id="close" href="#" alt="game rules">close</button>
+                </div>
+            </div>
+        </div>
     </section>
     </main>
     <script src="scripts/jquery-3.5.1.js"></script>

@@ -3,6 +3,7 @@
     --pTwoBorder: 0.1rem solid red;
     --pOneColor: lightblue;
     --pTwoColor: lightcoral;
+    --boardShadow: 0 0.15rem 0.15rem rgba(0, 0, 0, 0.2);
 }
 *{
     margin: 0;
@@ -28,6 +29,7 @@ header>h1 {
     font-size: 3rem;
     padding: 0.5rem;
     border-radius: 50%;
+    box-shadow: var(--boardShadow);
 }
 #playerSection {
     margin-top: 2rem;
@@ -48,6 +50,8 @@ header>h1 {
     border-radius: 20%;
     opacity: 0.8;
     outline: none;
+    border: none;
+    box-shadow: var(--boardShadow);
     transition: all 0.25s ease-in-out;
 }
 #playerTwo {
@@ -60,6 +64,8 @@ header>h1 {
     border-radius: 20%;
     opacity: 0.8;
     outline: none;
+    border: none;
+    box-shadow: var(--boardShadow);
     transition: all 0.25s ease-in-out;
 }
 #playerOne:focus {
@@ -92,6 +98,7 @@ input {
     border: 0.2rem solid green;
     border-radius: 0% 50% 50% 0%;
     outline: none;
+    box-shadow: var(--boardShadow);
 }
 #playerTwoCapture {
     grid-area: playerTwoCapture;
@@ -100,10 +107,12 @@ input {
     border: 0.2rem solid red;
     border-radius: 50% 0% 0% 50%;
     outline: none;
+    box-shadow: var(--boardShadow);
 }
 .miniPots {
     outline: 0.1rem solid black;
     cursor: pointer;
+    box-shadow: var(--boardShadow);
 }
 #pOne1 {
     grid-area: pOne1;
@@ -202,6 +211,81 @@ input {
     font-family: Arial, Helvetica, sans-serif;
     padding: 0.5rem;
     border-radius: 30%;
+    border: none;
     outline: none;
+    box-shadow: var(--boardShadow);
+    cursor: pointer;
+}
+#openModal-position {
+    text-align: right;
+    margin: 1rem 1rem -3rem;
+}
+#openModal {
+    text-transform: capitalize;
+    transition: all 0.3s ease-in-out;
+}
+#openModal:hover {
+    background-color: var(--pOneColor);
+}
+#modal {
+    background: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    overflow: auto;
+    display: none;
+}
+#modal-textbox {
+    background: rgba(255,255,255,0.9);
+    height: 36rem;
+    width: 35rem;
+    border-radius: 1%;
+    margin: 1rem auto;
+    padding: 2%;
+    box-shadow: var(--boardShadow);
+}
+#modal-footer {
+    text-align: right;
+}
+#close {
+    text-transform: capitalize;
+    transition: all 0.3s ease-in-out;
+}
+#close:hover {
+    background-color: var(--pOneColor);
+}
+.center {
+    text-align: center;
+}
+.center>h1 {
+    text-transform: uppercase;
+    background: rgb(144, 238, 144, 0.15);
+    color: linear-gradient(90deg, rgb(76, 0, 255), rgba(3,4,5,0.15), rgb(76, 0, 255));
+    text-decoration: underline;
+    font-weight: bolder;
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 50%;
+}
+#modal-textbox>p {
+    margin: 1rem;
+    color: rgb(25, 161, 25);
+    font-weight: bolder;
+    font-size: 1rem;
+    line-height: 120%;
+}
+.modal-buttons {
+    padding: 1rem 1rem;
+    background: var(--pTwoColor);
+    border: none;
+    outline: none;
+    border-radius: 10%;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    box-shadow: var(--boardShadow);
     cursor: pointer;
 }
