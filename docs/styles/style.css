@@ -13,7 +13,9 @@
     font-family: 'Courier New', Courier, monospace;
 }
 body {
-    background: linear-gradient(90deg, blue, rgba(3,4,5,0.15), blue);
+    background:  linear-gradient(90deg,rgba(0, 0, 255, 0.514), rgba(3,4,5,0.15) 50%, rgba(0, 0, 255, 0.514)) 
+    /* linear-gradient(90deg, white, rgba(3,4,5,0.15)),
+    linear-gradient(90deg, white, rgba(3,4,5,0.15)) */
 }
 header {
     display: flex;
