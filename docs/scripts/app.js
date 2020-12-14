@@ -320,21 +320,23 @@ $(() => {
         if(rotateOne === false) {
             P_ONE.forEach((item) => {
                 item.css({
-                    "transform" : "rotateX(180deg)"
+                    "transform" : "rotateZ(180deg)"
                 });
             })
             $("#playerOneCapture").css({
-                    "transform" : "rotateX(180deg)"
+                    "transform" : "rotateZ(180deg)",
+                    "border-radius" : "50% 0% 0% 50%"
                 });
             return rotateOne = true;
         } else {
             P_ONE.forEach((item) => {
             item.css({
-                "transform" : "rotateX(360deg)"
+                "transform" : "rotateZ(360deg)"
             });
         })
              $("#playerOneCapture").css({
-                    "transform" : "rotateX(360deg)"
+                    "transform" : "rotateZ(360deg)",
+                    "border-radius" : "0% 50% 50% 0%"
                 });
             return rotateOne = false;
         }
@@ -344,21 +346,23 @@ $(() => {
         if(rotateTwo === false) {
             P_TWO.forEach((item) => { 
                 item.css({
-                    "transform" : "rotateX(180deg)"
+                    "transform" : "rotateZ(180deg)"
                 })
             })
              $("#playerTwoCapture").css({
-                    "transform" : "rotateX(180deg)"
+                    "transform" : "rotateZ(180deg)",
+                    "border-radius" : "0% 50% 50% 0%"
                 });
             return rotateTwo = true;
         } else {
             P_TWO.forEach((item) => { 
                 item.css({
-                    "transform" : "rotateX(360deg)"
+                    "transform" : "rotateZ(360deg)"
                 })
             })
              $("#playerTwoCapture").css({
-                    "transform" : "rotateX(360deg)"
+                    "transform" : "rotateZ(360deg)",
+                    "border-radius" : "50% 0% 0% 50%"
                 });
             return rotateTwo = false;
         }
