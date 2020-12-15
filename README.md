@@ -3,7 +3,7 @@ A **Mancala** game.
 
 ## Features
 1. [X] Built with HTML, CSS, JavaScript and jQuery (7 days to completion)
-2. [X] *You* against *another player*. (3 days to completion)
+2. [X] *You* against *another player* OR *you* against *the computer*. (3 days to completion)
 3. [X] Take turns picking a number from your player side and shifting to the right, adding/leaving one in each adjacent pot (including your big pot). (4 days to completion)
 4. [X] If your number is high enough to go around to your oponent's mini-pots, do so. (5 days to completion)
 5. [X] If your last laid/added number is in an empty pot across from an opponets filled mini pot, you capture their mini pot and yours (add the total from the two pots) and add that total to your big pot!
