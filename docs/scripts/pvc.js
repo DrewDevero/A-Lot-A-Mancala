@@ -43,15 +43,18 @@ $(() => {
     const $CLOSE_RULES = $("#close");
     const $FLIP_ONE = $("#flipPlayerOne");
     const $FLIP_TWO = $("#flipPlayerTwo");
-    const $PVP = $("#playerVsPlayer");
+    const $PVC = $("#playerVsComputer");
+    let cName;
+    let randomName;
+    let cPlayer;
 
     // prevents reload of page upon submit button click
 
     $("form").on("submit", (e) => {
         e.preventDefault();
     })
-
-    function playerVsPlayer() {
+    
+    function playerVsComputer() {
 
         // open modal
 
@@ -77,12 +80,28 @@ $(() => {
 
         function alternatePlayer() {
             if(playerOne === true) {
-                playerMove(0);
+                let computerChoice = Math.floor(Math.random() * cPlayer.moves.length);
+                let potSelected = cPlayer.moves[computerChoice];
+                    console.log(potSelected);
+                if(parseInt(potSelected.val()) !== 0) {
+                    setTimeout(() => computerMove(computerChoice), 2000);
+                } else {
+                    while(parseInt(potSelected.val()) === 0) {
+                        computerChoice = Math.floor(Math.random() * cPlayer.moves.length);
+                        potSelected = cPlayer.moves[computerChoice];
+                         if(parseInt(potSelected.val()) !== 0) {
+                            console.log(computerChoice);
+                            setTimeout(() => computerMove(computerChoice), 2000);
+                            console.log("yea");
+                            }
+                        console.log("redo");
+                    }
+
+                }
                 pOneEndGame();
                 $(".pOnePots").off("click");
                 // prevents capture pots from being manipulated
                 $("#playerOneCapture").off("click");
-                $("#playerTwoCapture").off("click");
                 return playerOne = false;
             } else {
                 playerMove(0);
@@ -152,7 +171,143 @@ $(() => {
                                     if(toCapture === $P_ONE[j].attr("id")) {
                                         if(countDown === 0 && parseInt($P_ONE[j].val()) === 1 && parseInt($P_TWO[j].val()) !== 0) {
                                             console.log($P_ONE[j].val())
-                                            let currentAmt = parseInt($("#playerOneCapture").val())
+                                            let currentAmt = parseInt($("#playerOneCapture").val());
+                                            $("#playerOneCapture").val(currentAmt + parseInt($P_ONE[j].val()) + parseInt($P_TWO[j].val()));
+                                            $P_ONE[j].val("0");
+                                            $P_TWO[j].val("0");
+                                        }
+                                    }
+                                }
+                            }
+                        // same side check and capture rules for player two                   
+                        } else if (playerOne === false) {
+                            // if player has reched enemy board
+                            let nextToCheck = $("input[type=submit]").eq(next)[0].id;
+                            if(nextToCheck === $P_ONE[1].attr("id")) {
+                                console.log(nextToCheck);
+                            }
+                            // if player has reached back around to their board
+                            let secondToCheck = $("input[type=submit]").eq(next)[0].id;
+                            if(secondToCheck === $P_TWO[5].attr("id")) {
+                                console.log("bar");
+                            }
+                            // if on the last move - i === 1
+                            // if next value will be === 1
+                            // parallel value !== 0
+                            // add next value and parallel value
+                            // place total in player that moved capture pot
+
+                            let toCapture = $("input[type=submit]").eq(next-1)[0].id;
+                            if (valueOne > 5) {
+                                for(let k = 0; k < 6; k++) {
+                                    if(toCapture === $P_TWO[k].attr("id")) {
+                                        if(countDown === 0 && parseInt($P_TWO[k].val()) === 1 && parseInt($P_ONE[k].val()) !== 0) {
+                                            console.log($P_TWO[k].val())
+                                            let currentAmt = parseInt($("#playerTwoCapture").val());
+                                            $("#playerTwoCapture").val(currentAmt + parseInt($P_TWO[k].val()) + parseInt($P_ONE[k].val()));
+                                            $P_TWO[k].val("0");
+                                            $P_ONE[k].val("0");
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }, time);
+                    time += 300;           
+                    i--;
+                }
+        //apply alternate player function
+                if(parseInt(potSelected.val()) === 0) {
+                    "";
+                } else {
+                    $(".pOnePots").off("click");
+                    $(".pTwoPots").off("click");
+                    setTimeout(() => alternatePlayer(), time);
+                }
+                potSelected.val("0");
+                return playerOne;
+            })
+            if (choice < $("input[type=submit]").length - 2) {
+                playerMove(choice+1);
+            }
+            return playerOne;
+        }
+
+        // computer move function 
+
+        function computerMove(choice) {
+            let potSelected = cPlayer.moves[choice];
+            console.log(potSelected);
+        // value of selected pot
+                let valueOne = parseInt(potSelected.val());
+                let i = valueOne;
+        // the next pot to add to
+                let next;
+                switch(choice) {
+                    case 5:
+                        next = choice + 3;
+                    break;
+                    case 4:
+                        next = choice + 5;
+                    break;
+                    case 3:
+                        next = choice + 7;
+                    break;
+                    case 2:
+                        next = choice + 9;
+                    break;
+                    case 1:
+                        next = choice + 11;
+                    break;
+                    case 0:
+                        next = choice + 13;
+                    break;
+                }
+                console.log(choice);
+        //time it takes to add 1 to next pot
+                let time = 300;
+        //countDown to capture check
+                let countDown = valueOne;
+        //add one to every adjacent pot
+                while(i > 0) {      
+                    setTimeout(() => {
+                        const valueNext = parseInt($("input[type=submit]").eq(next).val());
+                        const addedValues = valueNext + 1;
+                        $("input[type=submit]").eq(next).val(addedValues);
+                        next++;
+                        if(next === $("input[type=submit]").length) {
+                            next = 0;
+                        }
+                        // skip over the opponents capture pot when adding 1 to adjacent pots
+                        if(playerOne === true && $("input[type=submit]").eq(next)[0].id === $("#playerTwoCapture")[0].id) {
+                            next = 0;
+                        } else if (playerOne === false && $("input[type=submit]").eq(next)[0].id === $("#playerOneCapture")[0].id) {
+                            next++;
+                        }
+                        countDown--;
+                        if(playerOne === true) {
+                            // if player has reched enemy board
+                            let nextToCheck = $("input[type=submit]").eq(next)[0].id;
+                            if(nextToCheck === $P_TWO[5].attr("id")) {
+                                console.log(nextToCheck);
+                            }
+                            // if player has reached back around to their board
+                            let secondToCheck = $("input[type=submit]").eq(next)[0].id;
+                            if(secondToCheck === $P_ONE[0].attr("id")) {
+                                console.log("foo");
+                            }
+                            // if on the last move - i === 1
+                            // if next value will be === 1
+                            // parallel value !== 0
+                            // add next value and parallel value
+                            // place total in player that moved capture pot
+                            let toCapture = $("input[type=submit]").eq(next-1)[0].id;
+                            if(valueOne > 5) {
+                                for(let j = 0; j < 6; j++) {
+                                    if(toCapture === $P_ONE[j].attr("id")) {
+                                        if(countDown === 0 && parseInt($P_ONE[j].val()) === 1 && parseInt($P_TWO[j].val()) !== 0) {
+                                            console.log($P_ONE[j].val())
+                                            let currentAmt = parseInt($("#playerOneCapture").val());
                                             $("#playerOneCapture").val(currentAmt + parseInt($P_ONE[j].val()) + parseInt($P_TWO[j].val()));
                                             $P_ONE[j].val("0");
                                             $P_TWO[j].val("0");
@@ -197,7 +352,7 @@ $(() => {
                     i--;
                 }
         //apply alternate player function
-                if(parseInt(potSelected.val()) === 0) {
+                if(playerOne === true && parseInt(potSelected.val()) === 0) {
                     "";
                 } else {
                     $(".pOnePots").off("click");
@@ -206,11 +361,6 @@ $(() => {
                 }
                 potSelected.val("0");
                 return playerOne;
-            })
-            if (choice < $("input[type=submit]").length - 2) {
-                playerMove(choice+1);
-            }
-            return playerOne;
         }
 
         //Toss the coin (button click) to have p1 or p2 be chosen to go first. 50/50 (50/49.9999...) chance achieved with Math.random()
@@ -234,7 +384,8 @@ $(() => {
                     , 3000});
                     return playerOne = true;
                 } else {
-                    playerMove(0);
+                    let computerChoice = Math.floor(Math.random() * cPlayer.moves.length)
+                    setTimeout(() => computerMove(computerChoice), 2000);
                     $("#playerOneCapture").off("click"); // prevents pOne capture pot from being manipulated
                     $("#playerTwoCapture").off("click"); // prevents pTwo capture pot from being manipulated
                     $(".pOnePots").off("click");
@@ -249,7 +400,8 @@ $(() => {
                     return playerOne = false;
                 }
             })
-        })();
+    })()
+
         // End game
         // when it's the players turn and their side === 0 (all their mini-pots === 0)
         // all of opponents mini pot points gets added to their capture pot
@@ -388,9 +540,15 @@ $(() => {
     // follow all pre-established rules of the game
     // when computer has no more moves and it's the computer's turn, turn off computer gameplay as the game will then end as usual
 
-    $PVP.on("click", () => {
-        playerVsPlayer();
-        console.log("This button removes 'choose PvP or PvC game modal' to allow player 1 and player 2 to play at their leisure.");
+    $PVC.on("click", () => {
+        cName = ["Jessica", "Taylor", "Ashley", "Michael", "Amanda", "Christopher", "Sarah", "Matthew", "Jennifer", "Joshua", "Amy"];
+        randomName = Math.floor(Math.random() * cName.length);
+        cPlayer = {
+            name : cName[randomName],
+            moves : $P_TWO
+        };
+        $("#playerTwo").val(cPlayer.name);
+        playerVsComputer();
     })
-
+/* setInterval(() => console.log(cName, randomName, cPlayer), 1000); */
 });

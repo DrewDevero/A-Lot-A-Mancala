@@ -32,25 +32,25 @@
         <!-- <canvas></canvas> -->
         <form class="gameForm">
             <article id="theGameSpacing">
-                <input type="submit" value="4" class="miniPots pOnePots" id="pOne1" alt="Your Warrior Avatar"></input>
-                <input type="submit" value="4" class="miniPots pOnePots" id="pOne2"></input>
-                <input type="submit" value="4" class="miniPots pOnePots" id="pOne3"></input>
-                <input type="submit" value="4" class="miniPots pOnePots" id="pOne4"></input>
-                <input type="submit" value="4" class="miniPots pOnePots" id="pOne5"></input>
-                <input type="submit" value="4" class="miniPots pOnePots" id="pOne6"></input>
+                <input type="submit" value="0" class="miniPots pOnePots" id="pOne1" alt="Your Warrior Avatar"></input>
+                <input type="submit" value="0" class="miniPots pOnePots" id="pOne2"></input>
+                <input type="submit" value="0" class="miniPots pOnePots" id="pOne3"></input>
+                <input type="submit" value="3" class="miniPots pOnePots" id="pOne4"></input>
+                <input type="submit" value="0" class="miniPots pOnePots" id="pOne5"></input>
+                <input type="submit" value="8" class="miniPots pOnePots" id="pOne6"></input>
                 <input type="submit" value="0" id="playerOneCapture"></input>
-                <input type="submit" value="4" class="miniPots pTwoPots" id="pTwo1"></input>
-                <input type="submit" value="4" class="miniPots pTwoPots" id="pTwo2"></input>
-                <input type="submit" value="4" class="miniPots pTwoPots" id="pTwo3"></input>
-                <input type="submit" value="4" class="miniPots pTwoPots" id="pTwo4"></input>
-                <input type="submit" value="4" class="miniPots pTwoPots" id="pTwo5"></input>
-                <input type="submit" value="4" class="miniPots pTwoPots" id="pTwo6"></input>
+                <input type="submit" value="0" class="miniPots pTwoPots" id="pTwo1"></input>
+                <input type="submit" value="1" class="miniPots pTwoPots" id="pTwo2"></input>
+                <input type="submit" value="1" class="miniPots pTwoPots" id="pTwo3"></input>
+                <input type="submit" value="1" class="miniPots pTwoPots" id="pTwo4"></input>
+                <input type="submit" value="0" class="miniPots pTwoPots" id="pTwo5"></input>
+                <input type="submit" value="8" class="miniPots pTwoPots" id="pTwo6"></input>
                 <input type="submit" value="0" id="playerTwoCapture"></input>
             </article>
         </form>
     </section>
     <section class="coinTossSection">
-        <button id="coinToss">coin toss<br/>p1/p2</button>
+        <button id="coinToss">coin toss<br/>to start</button>
     </section>
     <section>
         <div id="modal">
@@ -62,7 +62,7 @@
                 <p>2. Take turns picking a number from your player side and shifting to the right, adding/leaving one in each adjacent pot (including your big pot).</p>
                 <p>3. If your number is high enough to go around to your oponent's mini-pots, do so.</p>
                 <p>4. If your last laid/added number is in an empty pot across from an opponets filled mini pot, you capture their mini pot and yours (add the total from the two pots) and add that total to your big pot!</p>
-                <p>5. When/if one player has no more filled mini-pots, the other player will have all of their remaining mini pots added to their big pot!</p>
+                <p>5. When/if one player has no more filled mini-pots, the other player will have the total from all of their remaining mini pots added to their big pot!</p>
                 <p>6. When all mini pots are empty, the player with the highest number in their big pot wins!</p>
                 <div id="modal-footer">
                     <button type="button" class="modal-buttons" id="close" href="#" alt="game rules">close</button>
@@ -72,12 +72,13 @@
     </section>
     <section>
         <div id="playerVs-modal">
-            <button type="button" id="playerVsPlayer">Player vs. Player</button>
-            <button type="button" id="playerVsComputer">Player vs. Computer</button>
+            <button type="button" id="playerVsPlayer">Player 1 vs. Player 2</button>
+            <button type="button" id="playerVsComputer">Player 1 vs. The Computer</button>
         </div>
     </section>
     </main>
     <script src="scripts/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="scripts/app.js"></script>
+    <script type="text/javascript" src="scripts/pvc.js"></script>
 </body>
 </html>

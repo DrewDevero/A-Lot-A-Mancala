@@ -4,11 +4,11 @@ A **Mancala** game.
 ## Features
 1. [X] Built with HTML, CSS, JavaScript and jQuery (7 days to completion)
 2. [X] *You* against *another player*. (3 days to completion)
-3. [X] Take turns shifting all beads in one of your mini pots over, leaving one in each adjacent pot (including the big pots). (4 days to completion)
-4. [X] If you have enough beads to go around to your oponent's mini-pots, do so. (5 days to completion)
-5. [X] If your last laid bead is across from an opponets filled mini pot, you capture their mini pot and your one bead and put those beads in your big pot!
-6. [X] When/if one player has no more beads in any of their mini-pots, the other play can put all of their mini-pot beads into their big pot! (6 days to completion)
-7. [X] The player with the most beads in their big pot wins! (7 days to completion)
+3. [X] Take turns picking a number from your player side and shifting to the right, adding/leaving one in each adjacent pot (including your big pot). (4 days to completion)
+4. [X] If your number is high enough to go around to your oponent's mini-pots, do so. (5 days to completion)
+5. [X] If your last laid/added number is in an empty pot across from an opponets filled mini pot, you capture their mini pot and yours (add the total from the two pots) and add that total to your big pot!
+6. [X] When/if one player has no more filled mini-pots, the other player will have the total from all of their remaining mini pots added to their big pot! (6 days to completion)
+7. [X] When all mini pots are empty, the player with the highest number in their big pot wins! (7 days to completion)
 
 ** I'm currently utilizing a grid for the board that will have responsive buttons for the players to click on. The amount each player has in their pots will be traked using math +=, ++ and -=, -- principles. Hopeful for a board image overlay to give the app more style an possibly 48 piece assets to correspond with the numerical gain and loss properties of the game
 
