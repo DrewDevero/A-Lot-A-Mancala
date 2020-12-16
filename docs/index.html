@@ -23,11 +23,10 @@
             <input type="text" id="playerOne" placeholder="Type P1 name"></input>
             <input type="text" id="playerTwo" placeholder="Type P2 name"></input> 
         </form>
+    </section>
         <div class="flipButtonSpacing"> 
-            <button type="button" class="flipButtons" id="flipPlayerOne">flip p1</button>
             <button type="button" class="flipButtons" id="flipPlayerTwo">flip p2</button>
         </div>
-    </section>
     <section class="gameSection">
         <!-- <canvas></canvas> -->
         <form class="gameForm">
@@ -46,12 +45,13 @@
                 <input type="submit" value="4" class="miniPots pTwoPots" id="pTwo5"></input>
                 <input type="submit" value="4" class="miniPots pTwoPots" id="pTwo6"></input>
                 <input type="submit" value="0" id="playerTwoCapture"></input>
+                <button id="coinToss">coin toss<br/>to start</button>
             </article>
         </form>
     </section>
-    <section class="coinTossSection">
-        <button id="coinToss">coin toss<br/>to start</button>
-    </section>
+        <div class="flipButtonSpacing"> 
+            <button type="button" class="flipButtons" id="flipPlayerOne">flip p1</button>
+        </div>
     <section>
         <div id="modal">
             <div id="modal-textbox">
@@ -59,11 +59,12 @@
                     <h1>lets play millennial mancala!</h1>
                 </div>
                 <p>1. *You* against *another player*<br/>(toss the coin to start).</p>
-                <p>2. Take turns picking a number from your player side and shifting to the right, adding/leaving one in each adjacent pot (including your big pot).</p>
-                <p>3. If your number is high enough to go around to your oponent's mini-pots, do so.</p>
-                <p>4. If your last laid/added number is in an empty pot across from an opponets filled mini pot, you capture their mini pot and yours (add the total from the two pots) and add that total to your big pot!</p>
-                <p>5. When/if one player has no more filled mini-pots, the other player will have the total from all of their remaining mini pots added to their big pot!</p>
-                <p>6. When all mini pots are empty, the player with the highest number in their big pot wins!</p>
+                <p>2. Either player can click the coin toss symbol to start the game. When the coin symbol is clicked, one player will be chosen at random to go first.</p>
+                <p>3. Take turns picking a number from your player side and shifting to the right, adding/leaving one in each adjacent pot (including your big pot).</p>
+                <p>4. If your number is high enough to go around to your oponent's mini-pots, do so.</p>
+                <p>5. If your last laid/added number is in an empty pot across from an opponets filled mini pot, you capture their mini pot and yours (add the total from the two pots) and add that total to your big pot!</p>
+                <p>6. When/if one player has no more filled mini-pots, the other player will have the total from all of their remaining mini pots added to their big pot!</p>
+                <p>7. When all mini pots are empty, the player with the highest number in their big pot wins!</p>
                 <div id="modal-footer">
                     <button type="button" class="modal-buttons" id="close" href="#" alt="game rules">close</button>
                 </div>
@@ -72,8 +73,12 @@
     </section>
     <section>
         <div id="playerVs-modal">
-            <button type="button" id="playerVsPlayer">Player 1 vs. Player 2</button>
-            <button type="button" id="playerVsComputer">Player 1 vs. The Computer</button>
+            <div id="playerVs-modal-textbox">
+                <div id="center">
+                    <button type="button" class="modal-buttons" id="playerVsPlayer">Player 1 vs. Player 2</button>
+                    <button type="button" class="modal-buttons" id="playerVsComputer">Player 1 vs. The Computer</button>
+                </div>
+            </div>
         </div>
     </section>
     </main>

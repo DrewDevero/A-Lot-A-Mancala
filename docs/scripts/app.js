@@ -226,12 +226,14 @@ $(() => {
                     $(".pTwoPots").off("click");
                     $("#coinToss").fadeOut(2000, () => {
                         $("#coinToss").html("Player One Starts");
+                        $("#coinToss").css({
+                            "left" : "19%",
+                            "top" : "20%"
+                        })
                     }).fadeIn(2000);
                     setTimeout(() => {
-                        $("#coinToss").fadeOut(15000, () => {
-                            $("#coinToss").html("Mancala");
-                        }).fadeIn(2000)
-                    , 3000});
+                        $("#coinToss").fadeOut(5000)
+                    })
                     return playerOne = true;
                 } else {
                     playerMove(0);
@@ -240,12 +242,14 @@ $(() => {
                     $(".pOnePots").off("click");
                     $("#coinToss").fadeOut(2000, () => {
                         $("#coinToss").html("Player Two Starts");
+                        $("#coinToss").css({
+                            "left" : "19%",
+                            "top" : "20%"
+                        })
                     }).fadeIn(2000);
                     setTimeout(() => {
-                        $("#coinToss").fadeOut(15000, () => {
-                            $("#coinToss").html("Mancala");
-                        }).fadeIn(2000)
-                    , 3000});
+                        $("#coinToss").fadeOut(5000)
+                    });
                     return playerOne = false;
                 }
             })
