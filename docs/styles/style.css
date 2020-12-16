@@ -340,9 +340,6 @@ input {
     box-shadow: var(--boardShadow);
     cursor: pointer;
 }
-
-
-
 #playerVsPlayer {
     text-transform: capitalize;
     transition: all 0.4s ease-in-out;
@@ -366,7 +363,7 @@ input {
     height: 10rem;
     width: 40rem;
     border-radius: 30%;
-    margin: 9rem auto;
+    margin: 13rem auto;
     padding: 2%;
     box-shadow: var(--boardShadow);
 }
