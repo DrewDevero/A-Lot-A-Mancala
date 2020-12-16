@@ -549,7 +549,7 @@ $(() => {
             setTimeout(() => {
                 if(playerOne === false && pTwoPotsTotal === 1) {
                     let pOneCapture = parseInt($("#playerOneCapture").val());
-                    $("#playerOneCapture").val(pOneCapture + pOnePotsTotal);
+                    $("#playerOneCapture").val(pOneCapture + pOnePotsTotal - 1);
                     for(let l = 0; l < 6; l++) {
                         $P_ONE[l].val("0");
                     }
@@ -578,7 +578,7 @@ $(() => {
             setTimeout(() => {
                 if(playerOne === true && pOnePotsTotal === 1) {
                     let pTwoCapture = parseInt($("#playerTwoCapture").val());
-                    $("#playerTwoCapture").val(pTwoCapture + pTwoPotsTotal);
+                    $("#playerTwoCapture").val(pTwoCapture + pTwoPotsTotal - 1);
                     for(let m = 0; m < 6; m++) {
                         $P_TWO[m].val("0");
                     }
