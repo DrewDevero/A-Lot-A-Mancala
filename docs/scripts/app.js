@@ -144,13 +144,65 @@ $(() => {
         //time it takes to add 1 to next pot
                 let time = 300;
         //countDown to capture check
-                let countDown = valueOne;
+                let countDown = valueOne;                                
         //add one to every adjacent pot
                 while(i > 0) {      
                     setTimeout(() => {
                         const valueNext = parseInt($("input[type=submit]").eq(next).val());
                         const addedValues = valueNext + 1;
                         $("input[type=submit]").eq(next).val(addedValues);
+                    // increase border each time a number is added on the board
+                        if(playerOne === true) {
+                            potSelected.css({
+                                "border" : "0.5rem solid rgba(0, 255, 0, 0.425)"
+                            });
+                            setTimeout(() => {
+                                potSelected.css({
+                                    "border" : "0.1rem solid rgba(0, 255, 0, 0.425)"
+                                });
+                            }, 500);
+                            $("input[type=submit]").eq(next).css({
+                                "border" : "0.5rem solid rgba(0, 255, 0, 0.425)"
+                            });
+                            setTimeout(() => {
+                                $("input[type=submit]").eq(next-1).css({
+                                    "border" : "0.1rem solid rgba(0, 255, 0, 0.425)"
+                                });
+                            }, 500);
+                            $("input[type=submit]").eq(next-1).css({
+                                "border" : "0.5rem solid rgba(0, 255, 0, 0.425)"
+                            });
+                            setTimeout(() => {
+                                $("input[type=submit]").eq(next-2).css({
+                                    "border" : "0.1rem solid rgba(0, 255, 0, 0.425)"
+                                });
+                            }, 500);
+                        } else {
+                            potSelected.css({
+                                "border" : "0.5rem solid rgba(255, 0, 0, 0.425)"
+                            });
+                            setTimeout(() => {
+                                potSelected.css({
+                                    "border" : "0.1rem solid rgba(255, 0, 0, 0.425)"
+                                });
+                            }, 500);
+                            $("input[type=submit]").eq(next).css({
+                                "border" : "0.5rem solid rgba(255, 0, 0, 0.425)"
+                            });
+                            setTimeout(() => {
+                                $("input[type=submit]").eq(next-1).css({
+                                    "border" : "0.1rem solid rgba(255, 0, 0, 0.425)"
+                                });
+                            }, 500);
+                            $("input[type=submit]").eq(next-1).css({
+                                "border" : "0.5rem solid rgba(255, 0, 0, 0.425)"
+                            });
+                            setTimeout(() => {
+                                $("input[type=submit]").eq(next-2).css({
+                                    "border" : "0.1rem solid rgba(255, 0, 0, 0.425)"
+                                });
+                            }, 500);
+                        }
                         next++;
                         if(next === $("input[type=submit]").length) {
                             next = 0;

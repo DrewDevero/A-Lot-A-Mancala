@@ -132,7 +132,7 @@ input {
     box-shadow: var(--boardShadow);
     font-family: var(--pOneFontFamily);
     font-weight: bolder;
-    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in-out, border 0.5s ease-in-out;
 }
 #playerTwoCapture {
     grid-area: playerTwoCapture;
@@ -144,14 +144,14 @@ input {
     box-shadow: var(--boardShadow);
     font-family: var(--pTwoFontFamily);
     font-weight: bold;
-    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in-out, border 0.5s ease-in-out;
 }
 .miniPots {
     outline: 0.1rem solid black;
     cursor: pointer;
     box-shadow: var(--boardShadow);
     font-weight: bold;
-    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in-out, border 0.5s ease-in-out;
 }
 #pOne1 {
     grid-area: pOne1;
