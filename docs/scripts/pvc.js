@@ -44,6 +44,9 @@ $(() => {
     const $FLIP_ONE = $("#flipPlayerOne");
     const $FLIP_TWO = $("#flipPlayerTwo");
     const $PVC = $("#playerVsComputer");
+    const $PLAYER_MODAL = $("#playerVs-modal");
+    const $WINNER_MODAL = $("#winner-modal");
+    const $MODAL_MESSAGE = $("#winnerMessage");
     let cName;
     let randomName;
     let cPlayer;
@@ -53,6 +56,25 @@ $(() => {
     $("form").on("submit", (e) => {
         e.preventDefault();
     })
+
+    const CLOSE_PLAYER_MODAL = () => {
+        $PLAYER_MODAL.fadeOut(1000);
+    }
+
+    const P_ONE_WINNER = () => {
+        $MODAL_MESSAGE.html("player one wins!!!")
+        $WINNER_MODAL.fadeIn(500);
+    }
+
+    const P_TWO_WINNER = () => {
+        $MODAL_MESSAGE.html("player two wins!!!")
+        $WINNER_MODAL.fadeIn(500);
+    }
+
+    const P_ONE_TWO_TIE = () => {
+        $MODAL_MESSAGE.html("it's a tie!!!")
+        $WINNER_MODAL.fadeIn(500);
+    }
     
     function playerVsComputer() {
 
@@ -74,7 +96,7 @@ $(() => {
 
         // auto open model on page landing
 
-        setTimeout(OPEN_MODAL, 2000);
+        setTimeout(OPEN_MODAL, 1300);
 
         // alternates playable sides
 
@@ -387,7 +409,7 @@ $(() => {
                     return playerOne = true;
                 } else {
                     let computerChoice = Math.floor(Math.random() * cPlayer.moves.length)
-                    setTimeout(() => computerMove(computerChoice), 2000);
+                    setTimeout(() => computerMove(computerChoice), 9000);
                     $("#playerOneCapture").off("click"); // prevents pOne capture pot from being manipulated
                     $("#playerTwoCapture").off("click"); // prevents pTwo capture pot from being manipulated
                     $(".pOnePots").off("click");
@@ -429,11 +451,11 @@ $(() => {
                     }
                     setTimeout(() => {
                     if(parseInt($("#playerOneCapture").val()) > parseInt($("#playerTwoCapture").val())) {
-                        alert("Player One Wins!");
+                        P_ONE_WINNER();
                     } else if(parseInt($("#playerTwoCapture").val()) > parseInt($("#playerOneCapture").val())) {
-                        alert("Player Two Wins!");
+                        P_TWO_WINNER();
                     } else {
-                        alert("It's a tie!");
+                        P_ONE_TWO_TIE();
                     }
                     }, 500);
                     setTimeout(() => location.reload(), 10000);
@@ -458,11 +480,11 @@ $(() => {
                     }
                     setTimeout(() => {
                     if(parseInt($("#playerOneCapture").val()) > parseInt($("#playerTwoCapture").val())) {
-                        alert("Player One Wins!");
+                        P_ONE_WINNER();
                     } else if(parseInt($("#playerTwoCapture").val()) > parseInt($("#playerOneCapture").val())) {
-                        alert("Player Two Wins!");
+                        P_TWO_WINNER();
                     } else {
-                        alert("It's a tie!");
+                        P_ONE_TWO_TIE();
                     }
                     }, 500);
                     setTimeout(() => location.reload(), 10000);
@@ -552,6 +574,7 @@ $(() => {
             moves : $P_TWO
         };
         $("#playerTwo").val(cPlayer.name);
+        CLOSE_PLAYER_MODAL();
         playerVsComputer();
     })
 /* setInterval(() => console.log(cName, randomName, cPlayer), 1000); */

@@ -44,12 +44,27 @@ $(() => {
     const $FLIP_ONE = $("#flipPlayerOne");
     const $FLIP_TWO = $("#flipPlayerTwo");
     const $PVP = $("#playerVsPlayer");
+    const $PLAYER_MODAL = $("#playerVs-modal");
+    const $WINNER_MODAL = $("#winner-modal");
+    const $MODAL_MESSAGE = $("#winnerMessage");
 
     // prevents reload of page upon submit button click
 
     $("form").on("submit", (e) => {
         e.preventDefault();
     })
+
+    // open "player vs. player OR player vs. computer" modal on page landing
+
+    const OPEN_PLAYER_MODAL = () => {
+        $PLAYER_MODAL.fadeIn(1000);
+    }
+
+    setTimeout(OPEN_PLAYER_MODAL,500);
+
+    const CLOSE_PLAYER_MODAL = () => {
+        $PLAYER_MODAL.fadeOut(1000);
+    }
 
     function playerVsPlayer() {
 
@@ -71,7 +86,24 @@ $(() => {
 
         // auto open model on page landing
 
-        setTimeout(OPEN_MODAL, 2000);
+        setTimeout(OPEN_MODAL, 1300);
+
+        // opens winner modals
+
+        const P_ONE_WINNER = () => {
+            $MODAL_MESSAGE.html("player one wins!!!")
+            $WINNER_MODAL.fadeIn(500);
+        }
+
+        const P_TWO_WINNER = () => {
+            $MODAL_MESSAGE.html("player two wins!!!")
+            $WINNER_MODAL.fadeIn(500);
+        }
+
+        const P_ONE_TWO_TIE = () => {
+            $MODAL_MESSAGE.html("it's a tie!!!")
+            $WINNER_MODAL.fadeIn(500);
+        }
 
         // alternates playable sides
 
@@ -277,11 +309,11 @@ $(() => {
                     }
                     setTimeout(() => {
                     if(parseInt($("#playerOneCapture").val()) > parseInt($("#playerTwoCapture").val())) {
-                        alert("Player One Wins!");
+                        P_ONE_WINNER();
                     } else if(parseInt($("#playerTwoCapture").val()) > parseInt($("#playerOneCapture").val())) {
-                        alert("Player Two Wins!");
+                        P_TWO_WINNER();
                     } else {
-                        alert("It's a tie!");
+                        P_ONE_TWO_TIE();
                     }
                     }, 500);
                     setTimeout(() => location.reload(), 10000);
@@ -306,11 +338,11 @@ $(() => {
                     }
                     setTimeout(() => {
                     if(parseInt($("#playerOneCapture").val()) > parseInt($("#playerTwoCapture").val())) {
-                        alert("Player One Wins!");
+                        P_ONE_WINNER();
                     } else if(parseInt($("#playerTwoCapture").val()) > parseInt($("#playerOneCapture").val())) {
-                        alert("Player Two Wins!");
+                        P_TWO_WINNER();
                     } else {
-                        alert("It's a tie!");
+                        P_ONE_TWO_TIE();
                     }
                     }, 500);
                     setTimeout(() => location.reload(), 10000);
@@ -393,6 +425,7 @@ $(() => {
     // when computer has no more moves and it's the computer's turn, turn off computer gameplay as the game will then end as usual
 
     $PVP.on("click", () => {
+        CLOSE_PLAYER_MODAL();
         playerVsPlayer();
         console.log("This button removes 'choose PvP or PvC game modal' to allow player 1 and player 2 to play at their leisure.");
     })
