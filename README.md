@@ -18,4 +18,5 @@ A Lot A' **Mancala**
 ** No problems at the end of the project. The game works as intended for Player vs. Player and Player vs. Computer. There's only (and always) more innovation possible; as that is the joy of the science of programming.
 
 ![Mancala Game Image](http://www.adrcrafts.com/wp-content/uploads/2018/06/Mancala-boardclassic-wooden-toyplay-woodenwooden-game-7.jpg)
+Image credit - adrcrafts.com
 [Millennial Mancala](https://drewdevero.github.io/Millennial-Mancala)
