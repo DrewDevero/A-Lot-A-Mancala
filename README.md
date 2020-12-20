@@ -19,4 +19,5 @@ A Lot A' **Mancala**
 
 ![Mancala Game Image](http://www.adrcrafts.com/wp-content/uploads/2018/06/Mancala-boardclassic-wooden-toyplay-woodenwooden-game-7.jpg)
 Image credit - adrcrafts.com
+
 [Millennial Mancala](https://drewdevero.github.io/Millennial-Mancala)
