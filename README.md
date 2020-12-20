@@ -1,5 +1,6 @@
 # Millennial Mancala
-A **Mancala** game. 
+A Lot A' **Mancala** 
+  - My twist on a verson (there are multiple, as Mancala is one of the oldest games still widely played today) of the board game, Mancala
 
 ## Features
 1. [X] Built with HTML, CSS, JavaScript and jQuery (7 days to completion)
