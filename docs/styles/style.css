@@ -1,11 +1,11 @@
 :root {
-    --pOneBorder: 0.1rem solid rgba(0, 255, 0, 0.425);
-    --pTwoBorder: 0.1rem solid rgba(255, 0, 0, 0.425);
-    --pOneColor: linear-gradient(90deg, rgb(34, 52, 245), lightblue, rgb(34, 52, 245));
-    --pTwoColor: linear-gradient(90deg, rgb(104, 104, 104), silver, rgb(104, 104, 104));
-    --pOneFontFamily: /* Verdana, "sans-serif" */ Garamond, serif;
-    --pTwoFontFamily: "Times New Roman", serif;
-    --boardShadow: 0 0.15rem 0.15rem rgba(0, 0, 0, 0.2);
+    --p-one-border: 0.1rem solid rgba(0, 255, 0, 0.425);
+    --p-two-border: 0.1rem solid rgba(255, 0, 0, 0.425);
+    --p-one-color: linear-gradient(90deg, rgb(34, 52, 245), lightblue, rgb(34, 52, 245));
+    --p-two-color: linear-gradient(90deg, rgb(104, 104, 104), silver, rgb(104, 104, 104));
+    --p-one-family: /* Verdana, "sans-serif" */ Garamond, serif;
+    --p-two-family: "Times New Roman", serif;
+    --board-shadow: 0 0.15rem 0.15rem rgba(0, 0, 0, 0.2);
 }
 *{
     margin: 0;
@@ -33,20 +33,20 @@ header>h1 {
     font-size: 3rem;
     padding: 0.5rem;
     border-radius: 50%;
-    box-shadow: var(--boardShadow);
+    box-shadow: var(--board-shadow);
 }
-#playerSection {
+#player-section {
     margin-top: 2rem;
     margin-bottom: 1rem;
 }
-.playerForm {
+.player-form {
     display: flex;
     justify-content: space-around;
     height: 5.5rem;
 }
-#playerOne {
+#player-one {
     margin: 1rem;
-    color: var(--pOneColor);
+    color: var(--p-one-color);
     text-align: center;
     text-transform: capitalize;
     font-family: 'Ariel';
@@ -57,12 +57,12 @@ header>h1 {
     opacity: 0.8;
     outline: none;
     border: none;
-    box-shadow: var(--boardShadow);
+    box-shadow: var(--board-shadow);
     transition: all 0.25s ease-in-out;
 }
-#playerTwo {
+#player-two {
     margin: 1rem;
-    color: var(--pTwoColor);
+    color: var(--p-two-color);
     text-align: center;
     text-transform: capitalize;
     font-family: 'Ariel';
@@ -73,26 +73,26 @@ header>h1 {
     opacity: 0.8;
     outline: none;
     border: none;
-    box-shadow: var(--boardShadow);
+    box-shadow: var(--board-shadow);
     transition: all 0.25s ease-in-out;
 }
-#playerOne:focus {
+#player-one:focus {
     background: rgba(144, 238, 144, 0.7);
 }
-#playerTwo:focus {
+#player-two:focus {
     background: rgba(228, 40, 40, 0.7);
 }
-#playerOne:hover {
+#player-one:hover {
     opacity: 1;
 }
-#playerTwo:hover {
+#player-two:hover {
     opacity: 1;
 }
-.flipButtonSpacing {
+.flip-button-spacing {
     display: flex;
     justify-content: center;
 }
-.flipButtons {
+.flip-buttons {
     padding: 1rem 1rem;
     border: none;
     outline: none;
@@ -101,143 +101,143 @@ header>h1 {
     font-size: 1.2rem;
     font-weight: bolder;
     text-transform: capitalize;
-    box-shadow: var(--boardShadow);
+    box-shadow: var(--board-shadow);
     cursor: pointer;
 }
-#flipPlayerOne {
-    background: var(--pOneColor);
+#flip-player-one {
+    background: var(--p-one-color);
     margin-bottom: 2rem;
 }
-#flipPlayerTwo {
-    background: var(--pTwoColor);
+#flip-player-two {
+    background: var(--p-two-color);
 }
-.gameSection {
+.game-section {
     display: flex;
     justify-content: center;
 }
-.gameForm {
+.game-form {
     margin: 2rem;
 }
 input {
     font-family: 'ariel';
     font-size: 3rem;
 }
-#playerOneCapture {
+#player-one-capture {
     grid-area: playerOneCapture;
     color: black;
-    background: var(--pOneColor);
+    background: var(--p-one-color);
     border: 0.2rem solid rgba(0, 255, 0, 0.425);
     border-radius: 0% 50% 50% 0%;
     outline: none;
-    box-shadow: var(--boardShadow);
-    font-family: var(--pOneFontFamily);
+    box-shadow: var(--board-shadow);
+    font-family: var(--p-one-family);
     font-weight: bolder;
     transition: transform 1s ease-in-out, border 0.5s ease-in-out;
 }
-#playerTwoCapture {
+#player-two-capture {
     grid-area: playerTwoCapture;
     color: white;
-    background: var(--pTwoColor);
+    background: var(--p-two-color);
     border: 0.2rem solid rgba(255, 0, 0, 0.425);
     border-radius: 50% 0% 0% 50%;
     outline: none;
-    box-shadow: var(--boardShadow);
-    font-family: var(--pTwoFontFamily);
+    box-shadow: var(--board-shadow);
+    font-family: var(--p-two-family);
     font-weight: bold;
     transition: transform 1s ease-in-out, border 0.5s ease-in-out;
 }
-.miniPots {
+.mini-pots {
     outline: 0.1rem solid black;
     cursor: pointer;
-    box-shadow: var(--boardShadow);
+    box-shadow: var(--board-shadow);
     font-weight: bold;
     transition: transform 1s ease-in-out, border 0.5s ease-in-out;
 }
-#pOne1 {
+#p-one-1 {
     grid-area: pOne1;
     color: black;
-    font-family: var(--pOneFontFamily);
-    background: var(--pOneColor);
-    border: var(--pOneBorder);
+    font-family: var(--p-one-family);
+    background: var(--p-one-color);
+    border: var(--p-one-border);
 }
-#pOne2 {
+#p-one-2 {
     grid-area: pOne2;
     color: black;
-    font-family: var(--pOneFontFamily);
-    background: var(--pOneColor);
-    border: var(--pOneBorder);
+    font-family: var(--p-one-family);
+    background: var(--p-one-color);
+    border: var(--p-one-border);
 }
-#pOne3 {
+#p-one-3 {
     grid-area: pOne3;
     color: black;
-    font-family: var(--pOneFontFamily);
-    background: var(--pOneColor);
-    border: var(--pOneBorder);
+    font-family: var(--p-one-family);
+    background: var(--p-one-color);
+    border: var(--p-one-border);
 }
-#pOne4 {
+#p-one-4 {
     grid-area: pOne4;
     color: black;
-    font-family: var(--pOneFontFamily);
-    background: var(--pOneColor);
-    border: var(--pOneBorder);
+    font-family: var(--p-one-family);
+    background: var(--p-one-color);
+    border: var(--p-one-border);
 }
-#pOne5 {
+#p-one-5 {
     grid-area: pOne5;
     color: black;
-    font-family: var(--pOneFontFamily);
-    background: var(--pOneColor);
-    border: var(--pOneBorder);
+    font-family: var(--p-one-family);
+    background: var(--p-one-color);
+    border: var(--p-one-border);
 }
-#pOne6 {
+#p-one-6 {
     grid-area: pOne6;
     color: black;
-    font-family: var(--pOneFontFamily);
-    background: var(--pOneColor);
-    border: var(--pOneBorder);
+    font-family: var(--p-one-family);
+    background: var(--p-one-color);
+    border: var(--p-one-border);
 }
-#pTwo1 {  
+#p-two-1 {  
     grid-area: pTwo1;
     color: white;
-    font-family: var(--pTwoFontFamily);
-    background: var(--pTwoColor);
-    border: var(--pTwoBorder);
+    font-family: var(--p-two-family);
+    background: var(--p-two-color);
+    border: var(--p-two-border);
 }
-#pTwo2 {  
+#p-two-2 {  
     grid-area: pTwo2;
     color: white;
-    font-family: var(--pTwoFontFamily);
-    background: var(--pTwoColor);
-    border: var(--pTwoBorder);
+    font-family: var(--p-two-family);
+    background: var(--p-two-color);
+    border: var(--p-two-border);
 }
-#pTwo3 {  
+#p-two-3 {  
     grid-area: pTwo3;
     color: white;
-    font-family: var(--pTwoFontFamily);
-    background: var(--pTwoColor);
-    border: var(--pTwoBorder);
+    font-family: var(--p-two-family);
+    background: var(--p-two-color);
+    border: var(--p-two-border);
 }
-#pTwo4 {  
+#p-two-4 {  
     grid-area: pTwo4;
     color: white;
-    font-family: var(--pTwoFontFamily);
-    background: var(--pTwoColor);
-    border: var(--pTwoBorder);
+    font-family: var(--p-two-family);
+    background: var(--p-two-color);
+    border: var(--p-two-border);
 }
-#pTwo5 {  
+#p-two-5 {  
     grid-area: pTwo5;
     color: white;
-    font-family: var(--pTwoFontFamily);
-    background: var(--pTwoColor);
-    border: var(--pTwoBorder);
+    font-family: var(--p-two-family);
+    background: var(--p-two-color);
+    border: var(--p-two-border);
 }
-#pTwo6 {  
+#p-two-6 {  
     grid-area: pTwo6;
     color: white;
-    font-family: var(--pTwoFontFamily);
-    background: var(--pTwoColor);
-    border: var(--pTwoBorder);
+    font-family: var(--p-two-family);
+    background: var(--p-two-color);
+    border: var(--p-two-border);
 }
-#theGameSpacing {
+#the-game-spacing {
     height: 100%;
     width: 100%;
     display: grid;
@@ -249,7 +249,7 @@ input {
     position: relative;
 }
 
-#coinToss {
+#coin-toss {
     text-transform: capitalize;
     color: rgb(190, 190, 190);
     font-size: 3rem;
@@ -260,21 +260,21 @@ input {
     border-radius: 30%;
     border: none;
     outline: none;
-    box-shadow: var(--boardShadow);
+    box-shadow: var(--board-shadow);
     cursor: pointer;
     position: absolute;
     left: 32%;
     top: 10%;
 }
-#openModal-position {
+#open-modal-position {
     text-align: right;
     margin: 1rem 1rem -3rem;
 }
-#openModal {
+#open-modal {
     text-transform: capitalize;
     transition: all 0.4s ease-in-out;
 }
-#openModal:hover {
+#open-modal:hover {
     font-size: 1.5rem;
 }
 #modal {
@@ -295,7 +295,7 @@ input {
     border-radius: 1%;
     margin: 1rem auto;
     padding: 2%;
-    box-shadow: var(--boardShadow);
+    box-shadow: var(--board-shadow);
 }
 #modal-footer {
     text-align: right;
@@ -337,17 +337,17 @@ input {
     font-size: 1.2rem;
     font-weight: bolder;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    box-shadow: var(--boardShadow);
+    box-shadow: var(--board-shadow);
     cursor: pointer;
 }
-#playerVsPlayer {
+#player-vs-player {
     text-transform: capitalize;
     transition: all 0.4s ease-in-out;
 }
-#playerVsPlayer:hover {
+#player-vs-player:hover {
     font-size: 1.5rem;
 }
-#playerVs-modal {
+#player-vs-modal {
     background: rgba(0,0,0,0.4);
     position: fixed;
     top: 0;
@@ -358,21 +358,21 @@ input {
     overflow: auto;
     display: none;
 }
-#playerVs-modal-textbox {
+#player-vs-modal-textbox {
     background: rgba(255,255,255,0.9);
     height: 10rem;
     width: 40rem;
     border-radius: 30%;
     margin: 13rem auto;
     padding: 2%;
-    box-shadow: var(--boardShadow);
+    box-shadow: var(--board-shadow);
 }
 
-#playerVsComputer {
+#player-vs-computer {
     text-transform: capitalize;
     transition: all 0.4s ease-in-out;
 }
-#playerVsComputer:hover {
+#player-vs-computer:hover {
     font-size: 1.5rem;
 }
 #center {
@@ -390,7 +390,7 @@ input {
     font-size: 1.2rem;
     font-weight: bolder;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    box-shadow: var(--boardShadow);
+    box-shadow: var(--board-shadow);
     cursor: pointer;
 }
 #winner-modal {
@@ -415,7 +415,7 @@ input {
     border: none;
     outline: none;
 }
-#winnerMessage {
+#winner-message {
     padding: 1rem;
     background: linear-gradient( rgb(34, 52, 245), white,  rgb(104, 104, 104));
     border: none;
@@ -426,5 +426,5 @@ input {
     font-size: 4rem;
     font-weight: bolder;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    box-shadow: var(--boardShadow);
+    box-shadow: var(--board-shadow);
 }

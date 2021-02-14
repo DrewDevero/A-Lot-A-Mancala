@@ -35,18 +35,18 @@ $(() => {
 
     "use strict;"
 
-    const $P_ONE = [$("#pOne1"), $("#pOne2"), $("#pOne3"), $("#pOne4"), $("#pOne5"), $("#pOne6")]
-    const $P_TWO = [$("#pTwo6"), $("#pTwo5"), $("#pTwo4"), $("#pTwo3"), $("#pTwo2"), $("#pTwo1")]
+    const $P_ONE = [$("#p-one-1"), $("#p-one-2"), $("#p-one-3"), $("#p-one-4"), $("#p-one-5"), $("#p-one-6")]
+    const $P_TWO = [$("#p-two-6"), $("#p-two-5"), $("#p-two-4"), $("#p-two-3"), $("#p-two-2"), $("#p-two-1")]
     let playerOne;
-    const $OPEN_RULES = $("#openModal");
+    const $OPEN_RULES = $("#open-modal");
     const $MODAL = $("#modal");
     const $CLOSE_RULES = $("#close");
-    const $FLIP_ONE = $("#flipPlayerOne");
-    const $FLIP_TWO = $("#flipPlayerTwo");
-    const $PVC = $("#playerVsComputer");
-    const $PLAYER_MODAL = $("#playerVs-modal");
+    const $FLIP_ONE = $("#flip-player-one");
+    const $FLIP_TWO = $("#flip-player-two");
+    const $PVC = $("#player-vs-computer");
+    const $PLAYER_MODAL = $("#player-vs-modal");
     const $WINNER_MODAL = $("#winner-modal");
-    const $MODAL_MESSAGE = $("#winnerMessage");
+    const $MODAL_MESSAGE = $("#winner-message");
     let cName;
     let randomName;
     let cPlayer;
@@ -121,17 +121,17 @@ $(() => {
 
                 }
                 pOneEndGame();
-                $(".pOnePots").off("click");
+                $(".p-one-pots").off("click");
                 // prevents capture pots from being manipulated
-                $("#playerOneCapture").off("click");
+                $("#player-one-capture").off("click");
                 return playerOne = false;
             } else {
                 playerMove(0);
                 pTwoEndGame();
-                $(".pTwoPots").off("click");
+                $(".p-two-pots").off("click");
                 // prevents capture pots from being manipulated
-                $("#playerOneCapture").off("click");
-                $("#playerTwoCapture").off("click");
+                $("#player-one-capture").off("click");
+                $("#player-two-capture").off("click");
                 return playerOne = true;
             }
         };
@@ -217,9 +217,9 @@ $(() => {
                             next = 0;
                         }
                         // skip over the opponents capture pot when adding 1 to adjacent pots
-                        if(playerOne === true && $("input[type=submit]").eq(next)[0].id === $("#playerTwoCapture")[0].id) {
+                        if(playerOne === true && $("input[type=submit]").eq(next)[0].id === $("#player-two-capture")[0].id) {
                             next = 0;
-                        } else if (playerOne === false && $("input[type=submit]").eq(next)[0].id === $("#playerOneCapture")[0].id) {
+                        } else if (playerOne === false && $("input[type=submit]").eq(next)[0].id === $("#player-one-capture")[0].id) {
                             next++;
                         }
                         countDown--;
@@ -245,8 +245,8 @@ $(() => {
                                     if(toCapture === $P_ONE[j].attr("id")) {
                                         if(countDown === 0 && parseInt($P_ONE[j].val()) === 1 && parseInt($P_TWO[j].val()) !== 0) {
                                             console.log($P_ONE[j].val())
-                                            let currentAmt = parseInt($("#playerOneCapture").val());
-                                            $("#playerOneCapture").val(currentAmt + parseInt($P_ONE[j].val()) + parseInt($P_TWO[j].val()));
+                                            let currentAmt = parseInt($("#player-one-capture").val());
+                                            $("#player-one-capture").val(currentAmt + parseInt($P_ONE[j].val()) + parseInt($P_TWO[j].val()));
                                             $P_ONE[j].val("0");
                                             $P_TWO[j].val("0");
                                         }
@@ -277,8 +277,8 @@ $(() => {
                                     if(toCapture === $P_TWO[k].attr("id")) {
                                         if(countDown === 0 && parseInt($P_TWO[k].val()) === 1 && parseInt($P_ONE[k].val()) !== 0) {
                                             console.log($P_TWO[k].val())
-                                            let currentAmt = parseInt($("#playerTwoCapture").val());
-                                            $("#playerTwoCapture").val(currentAmt + parseInt($P_TWO[k].val()) + parseInt($P_ONE[k].val()));
+                                            let currentAmt = parseInt($("#player-two-capture").val());
+                                            $("#player-two-capture").val(currentAmt + parseInt($P_TWO[k].val()) + parseInt($P_ONE[k].val()));
                                             $P_TWO[k].val("0");
                                             $P_ONE[k].val("0");
                                         }
@@ -294,8 +294,8 @@ $(() => {
                 if(parseInt(potSelected.val()) === 0) {
                     "";
                 } else {
-                    $(".pOnePots").off("click");
-                    $(".pTwoPots").off("click");
+                    $(".p-one-pots").off("click");
+                    $(".p-two-pots").off("click");
                     setTimeout(() => alternatePlayer(), time);
                 }
                 potSelected.val("0");
@@ -405,9 +405,9 @@ $(() => {
                             next = 0;
                         }
                         // skip over the opponents capture pot when adding 1 to adjacent pots
-                        if(playerOne === true && $("input[type=submit]").eq(next)[0].id === $("#playerTwoCapture")[0].id) {
+                        if(playerOne === true && $("input[type=submit]").eq(next)[0].id === $("#player-two-capture")[0].id) {
                             next = 0;
-                        } else if (playerOne === false && $("input[type=submit]").eq(next)[0].id === $("#playerOneCapture")[0].id) {
+                        } else if (playerOne === false && $("input[type=submit]").eq(next)[0].id === $("#player-one-capture")[0].id) {
                             next++;
                         }
                         countDown--;
@@ -433,8 +433,8 @@ $(() => {
                                     if(toCapture === $P_ONE[j].attr("id")) {
                                         if(countDown === 0 && parseInt($P_ONE[j].val()) === 1 && parseInt($P_TWO[j].val()) !== 0) {
                                             console.log($P_ONE[j].val())
-                                            let currentAmt = parseInt($("#playerOneCapture").val());
-                                            $("#playerOneCapture").val(currentAmt + parseInt($P_ONE[j].val()) + parseInt($P_TWO[j].val()));
+                                            let currentAmt = parseInt($("#player-one-capture").val());
+                                            $("#player-one-capture").val(currentAmt + parseInt($P_ONE[j].val()) + parseInt($P_TWO[j].val()));
                                             $P_ONE[j].val("0");
                                             $P_TWO[j].val("0");
                                         }
@@ -464,8 +464,8 @@ $(() => {
                                     if(toCapture === $P_TWO[k].attr("id")) {
                                         if(countDown === 0 && parseInt($P_TWO[k].val()) === 1 && parseInt($P_ONE[k].val()) !== 0) {
                                             console.log($P_TWO[k].val())
-                                            let currentAmt = parseInt($("#playerTwoCapture").val())
-                                            $("#playerTwoCapture").val(currentAmt + parseInt($P_TWO[k].val()) + parseInt($P_ONE[k].val()));
+                                            let currentAmt = parseInt($("#player-two-capture").val())
+                                            $("#player-two-capture").val(currentAmt + parseInt($P_TWO[k].val()) + parseInt($P_ONE[k].val()));
                                             $P_TWO[k].val("0");
                                             $P_ONE[k].val("0");
                                         }
@@ -481,8 +481,8 @@ $(() => {
                 if(playerOne === true && parseInt(potSelected.val()) === 0) {
                     "";
                 } else {
-                    $(".pOnePots").off("click");
-                    $(".pTwoPots").off("click");
+                    $(".p-one-pots").off("click");
+                    $(".p-two-pots").off("click");
                     setTimeout(() => alternatePlayer(), time);
                 }
                 potSelected.val("0");
@@ -492,40 +492,40 @@ $(() => {
         //Toss the coin (button click) to have p1 or p2 be chosen to go first. 50/50 (50/49.9999...) chance achieved with Math.random()
 
         (function coinToss() {
-            $("#coinToss").one("click", () => {
+            $("#coin-toss").one("click", () => {
                 // alternates playable sides
                 let coinToss = Math.random();
                 if(coinToss > 0.5) {
                     playerMove(0);
-                    $("#playerOneCapture").off("click"); // prevents pOne capture pot from being manipulated
-                    $("#playerTwoCapture").off("click"); // prevents pTwo capture pot from being manipulated
-                    $(".pTwoPots").off("click");
-                    $("#coinToss").fadeOut(2000, () => {
-                        $("#coinToss").html("Player One Starts");
-                        $("#coinToss").css({
+                    $("#player-one-capture").off("click"); // prevents pOne capture pot from being manipulated
+                    $("#player-two-capture").off("click"); // prevents pTwo capture pot from being manipulated
+                    $(".p-two-pots").off("click");
+                    $("#coin-toss").fadeOut(2000, () => {
+                        $("#coin-toss").html("Player One Starts");
+                        $("#coin-toss").css({
                             "left" : "20%",
                             "top" : "20%"
                         })
                     }).fadeIn(2000);
                     setTimeout(() => {
-                        $("#coinToss").fadeOut(5000)
+                        $("#coin-toss").fadeOut(5000)
                     });
                     return playerOne = true;
                 } else {
                     let computerChoice = Math.floor(Math.random() * cPlayer.moves.length)
                     setTimeout(() => computerMove(computerChoice), 9000);
-                    $("#playerOneCapture").off("click"); // prevents pOne capture pot from being manipulated
-                    $("#playerTwoCapture").off("click"); // prevents pTwo capture pot from being manipulated
-                    $(".pOnePots").off("click");
-                    $("#coinToss").fadeOut(2000, () => {
-                        $("#coinToss").html("Player Two Starts");
-                        $("#coinToss").css({
+                    $("#player-one-capture").off("click"); // prevents pOne capture pot from being manipulated
+                    $("#player-two-capture").off("click"); // prevents pTwo capture pot from being manipulated
+                    $(".p-one-pots").off("click");
+                    $("#coin-toss").fadeOut(2000, () => {
+                        $("#coin-toss").html("Player Two Starts");
+                        $("#coin-toss").css({
                             "left" : "20%",
                             "top" : "20%"
                         })
                     }).fadeIn(2000);
                     setTimeout(() => {
-                        $("#coinToss").fadeOut(5000)
+                        $("#coin-toss").fadeOut(5000)
                     });
                     return playerOne = false;
                 }
@@ -548,15 +548,15 @@ $(() => {
             }, 2500)
             setTimeout(() => {
                 if(playerOne === false && pTwoPotsTotal === 1) {
-                    let pOneCapture = parseInt($("#playerOneCapture").val());
-                    $("#playerOneCapture").val(pOneCapture + pOnePotsTotal - 1);
+                    let pOneCapture = parseInt($("#player-one-capture").val());
+                    $("#player-one-capture").val(pOneCapture + pOnePotsTotal - 1);
                     for(let l = 0; l < 6; l++) {
                         $P_ONE[l].val("0");
                     }
                     setTimeout(() => {
-                    if(parseInt($("#playerOneCapture").val()) > parseInt($("#playerTwoCapture").val())) {
+                    if(parseInt($("#player-one-capture").val()) > parseInt($("#player-two-capture").val())) {
                         P_ONE_WINNER();
-                    } else if(parseInt($("#playerTwoCapture").val()) > parseInt($("#playerOneCapture").val())) {
+                    } else if(parseInt($("#player-two-capture").val()) > parseInt($("#player-one-capture").val())) {
                         P_TWO_WINNER();
                     } else {
                         P_ONE_TWO_TIE();
@@ -577,15 +577,15 @@ $(() => {
             }, 2500)
             setTimeout(() => {
                 if(playerOne === true && pOnePotsTotal === 1) {
-                    let pTwoCapture = parseInt($("#playerTwoCapture").val());
-                    $("#playerTwoCapture").val(pTwoCapture + pTwoPotsTotal - 1);
+                    let pTwoCapture = parseInt($("#player-two-capture").val());
+                    $("#player-two-Capture").val(pTwoCapture + pTwoPotsTotal - 1);
                     for(let m = 0; m < 6; m++) {
                         $P_TWO[m].val("0");
                     }
                     setTimeout(() => {
-                    if(parseInt($("#playerOneCapture").val()) > parseInt($("#playerTwoCapture").val())) {
+                    if(parseInt($("#player-one-capture").val()) > parseInt($("#player-two-capture").val())) {
                         P_ONE_WINNER();
-                    } else if(parseInt($("#playerTwoCapture").val()) > parseInt($("#playerOneCapture").val())) {
+                    } else if(parseInt($("#player-two-capture").val()) > parseInt($("#player-one-capture").val())) {
                         P_TWO_WINNER();
                     } else {
                         P_ONE_TWO_TIE();
@@ -609,7 +609,7 @@ $(() => {
                             "transform" : "rotateZ(180deg)"
                         });
                     })
-                    $("#playerOneCapture").css({
+                    $("#player-one-capture").css({
                             "transform" : "rotateZ(180deg)",
                             "border-radius" : "50% 0% 0% 50%"
                         });
@@ -620,7 +620,7 @@ $(() => {
                         "transform" : "rotateZ(360deg)"
                     });
                 })
-                    $("#playerOneCapture").css({
+                    $("#player-one-capture").css({
                             "transform" : "rotateZ(360deg)",
                             "border-radius" : "0% 50% 50% 0%"
                         });
@@ -635,7 +635,7 @@ $(() => {
                             "transform" : "rotateZ(180deg)"
                         })
                     })
-                    $("#playerTwoCapture").css({
+                    $("#player-two-capture").css({
                             "transform" : "rotateZ(180deg)",
                             "border-radius" : "0% 50% 50% 0%"
                         });
@@ -646,7 +646,7 @@ $(() => {
                             "transform" : "rotateZ(360deg)"
                         })
                     })
-                    $("#playerTwoCapture").css({
+                    $("#player-two-capture").css({
                             "transform" : "rotateZ(360deg)",
                             "border-radius" : "50% 0% 0% 50%"
                         });
@@ -677,7 +677,7 @@ $(() => {
             name : cName[randomName],
             moves : $P_TWO
         };
-        $("#playerTwo").val(cPlayer.name);
+        $("#player-two").val(cPlayer.name);
         CLOSE_PLAYER_MODAL();
         playerVsComputer();
     })
